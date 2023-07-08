@@ -1,4 +1,6 @@
 # veterinariaAPI
+Backend_:
+JAVA-SpringBoot, SQL(h2)
 
 Objetivo:
 Poder tener acceso a los datos de las mascotas y sus tratamientos
