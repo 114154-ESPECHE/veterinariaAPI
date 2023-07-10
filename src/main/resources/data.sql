@@ -31,20 +31,20 @@ VALUES (5, 'Negro', 'Gris', 1, 0);
 INSERT INTO mascotas (id_cliente, nombre, color, edad, especie)
 VALUES (4, 'Micho', 'Blanco y negro', 4, 0);
 
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-07-01', 'Vacunación', 'Vacuna anual');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-06-15', 'Cirugía', 'Esterilización');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-02', 'Consulta', 'Examen de rutina');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-06-30', 'Vacunación', 'Vacuna antirrábica');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-05', 'Vacunación', 'Vacuna contra la tos de las perreras');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-07-01', 'Vacunación', 'Vacuna anual');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-06-15', 'Cirugía', 'Esterilización');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-02', 'Consulta', 'Examen de rutina');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-06-30', 'Vacunación', 'Vacuna antirrábica');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-07-05', 'Vacunación', 'Vacuna contra la tos de las perreras');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-07-10', 'Cirugía', 'Extracción de dientes');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (4, '2023-07-03', 'Consulta', 'Control de peso');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (4, '2023-07-07', 'Vacunación', 'Vacuna contra la leptospirosis');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-06-29', 'Vacunación', 'Vacuna anual');
-INSERT INTO historialMascotas (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-07-12', 'Cirugía', 'Esterilización');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-07-01', 'Vacunación', 'Vacuna anual');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-06-15', 'Cirugía', 'Esterilización');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-02', 'Consulta', 'Examen de rutina');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-06-30', 'Vacunación', 'Vacuna antirrábica');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-05', 'Vacunación', 'Vacuna contra la tos de las perreras');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-07-01', 'Vacunación', 'Vacuna anual');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (1, '2023-06-15', 'Cirugía', 'Esterilización');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-07-02', 'Consulta', 'Examen de rutina');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (2, '2023-06-30', 'Vacunación', 'Vacuna antirrábica');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-07-05', 'Vacunación', 'Vacuna contra la tos de las perreras');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-07-10', 'Cirugía', 'Extracción de dientes');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (4, '2023-07-03', 'Consulta', 'Control de peso');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (4, '2023-07-07', 'Vacunación', 'Vacuna contra la leptospirosis');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-06-29', 'Vacunación', 'Vacuna anual');
+INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-07-12', 'Cirugía', 'Esterilización');
 
 

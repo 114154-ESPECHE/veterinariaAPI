@@ -1,5 +1,6 @@
 package com.example.veterinariaapi.Controllers;
 
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
@@ -45,8 +46,9 @@ public class MascotaController {
          return ResponseEntity.ok(mascotaSaved);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<UpdateMascotaRequestDTO> updateMascota(@PathVariable Long id, @RequestBody UpdateMascotaRequestDTO updateMascotaRequestDTO){
-        UpdateMascotaRequestDTO mascotaUpdate = mascotaService.updateMascota(id, updateMascotaRequestDTO);
+    public ResponseEntity<UpdateMascotaRequestDTO> updateMascota(@PathVariable Long id, @RequestBody UpdateMascotaRequestDTO updateMascotaRequestDTO,
+                                                                 HistoriaClinicaRequestDTO historiaClinicaRequestDTO){
+        UpdateMascotaRequestDTO mascotaUpdate = mascotaService.updateMascota(id, updateMascotaRequestDTO, historiaClinicaRequestDTO);
         return ResponseEntity.ok(mascotaUpdate);
     }
 

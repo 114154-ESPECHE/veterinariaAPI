@@ -1,6 +1,5 @@
 package com.example.veterinariaapi.Entities;
 
-import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Models.Especie;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,5 +27,7 @@ public class MascotaEntity {
     private int edad;
     @Column
     private Especie especie;
+    @OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
+    private HistoriaClinicaEntity idHistoriaClinica;
 
 }

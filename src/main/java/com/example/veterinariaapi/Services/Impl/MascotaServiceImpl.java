@@ -1,9 +1,11 @@
 package com.example.veterinariaapi.Services.Impl;
 
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
 import com.example.veterinariaapi.Entities.ClienteEntity;
+import com.example.veterinariaapi.Entities.HistoriaClinicaEntity;
 import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Mascota;
 import com.example.veterinariaapi.Repositories.jpa.ClienteJpaRepository;
@@ -83,7 +85,8 @@ public class MascotaServiceImpl implements MascotaService {
     }
 
     @Override
-    public UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO) {
+    public UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO,
+                                                 HistoriaClinicaRequestDTO historiaClinicaDTO) {
         MascotaEntity mascotaEntity = mascotaJpaRepository.getReferenceById(id);
         if (Objects.isNull(mascotaEntity.getNombre())){
             throw new RuntimeException("Mascota no encontrado");
@@ -92,6 +95,15 @@ public class MascotaServiceImpl implements MascotaService {
         mascotaEntity.setColor(updateMascotaRequestDTO.getColor());
         mascotaEntity.setEdad(updateMascotaRequestDTO.getEdad());
         mascotaEntity.setEspecie(updateMascotaRequestDTO.getEspecie());
+
+
+        HistoriaClinicaEntity historiaClinicaEntity = new HistoriaClinicaEntity();
+        historiaClinicaEntity.setFecha(historiaClinicaDTO.getFecha());
+        historiaClinicaEntity.setEvento(historiaClinicaDTO.getEvento());
+        historiaClinicaEntity.setDescripcion(historiaClinicaDTO.getDescripcion());
+        historiaClinicaEntity.setIdMascota(mascotaEntity);
+
+        mascotaEntity.setIdHistoriaClinica(historiaClinicaEntity);
         mascotaJpaRepository.save(mascotaEntity);
         return  modelMapper.map(mascotaEntity, UpdateMascotaRequestDTO.class);
     }
