@@ -1,10 +1,9 @@
 package com.example.veterinariaapi.Controllers;
 
-import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaRequestDTO;
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
-import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Mascota;
 import com.example.veterinariaapi.Services.MascotaService;
 import jakarta.validation.Valid;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/mascotas")
@@ -46,9 +44,8 @@ public class MascotaController {
          return ResponseEntity.ok(mascotaSaved);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<UpdateMascotaRequestDTO> updateMascota(@PathVariable Long id, @RequestBody UpdateMascotaRequestDTO updateMascotaRequestDTO,
-                                                                 HistoriaClinicaRequestDTO historiaClinicaRequestDTO){
-        UpdateMascotaRequestDTO mascotaUpdate = mascotaService.updateMascota(id, updateMascotaRequestDTO, historiaClinicaRequestDTO);
+    public ResponseEntity<UpdateMascotaRequestDTO> updateMascota(@PathVariable Long id, @RequestBody UpdateMascotaRequestDTO updateMascotaRequestDTO){
+        UpdateMascotaRequestDTO mascotaUpdate = mascotaService.updateMascota(id, updateMascotaRequestDTO);
         return ResponseEntity.ok(mascotaUpdate);
     }
 

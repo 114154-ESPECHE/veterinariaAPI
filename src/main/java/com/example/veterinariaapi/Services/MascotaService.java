@@ -1,6 +1,6 @@
 package com.example.veterinariaapi.Services;
 
-import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaRequestDTO;
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
@@ -19,7 +19,8 @@ public interface MascotaService {
 
     MascotaResponseDTO saveMascota(NewMascotaRequestDTO newMascotaRequestDTO);
 
-    UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO, HistoriaClinicaRequestDTO historiaClinicaDTO);
+    UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO);
+    //UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO, HistoriaClinicaResponseDTO historiaClinicaDTO);
 
     void deleteMascota(Long id);
 }

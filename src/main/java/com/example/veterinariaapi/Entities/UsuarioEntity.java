@@ -5,26 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "HISTORIAMASCOTAS")
+@Table(name = "usuarios")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class HistoriaClinicaEntity {
+@AllArgsConstructor
+public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "id_mascota")
-    private MascotaEntity mascota;
     @Column
-    private LocalDate fecha;
+    private String userName;
     @Column
-    private String evento;
-    @Column
-    private String descripcion;
-
+    private String password;
 }

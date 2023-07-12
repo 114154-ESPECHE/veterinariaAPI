@@ -1,6 +1,6 @@
 package com.example.veterinariaapi.Services.Impl;
 
-import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaRequestDTO;
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
@@ -60,12 +60,13 @@ public class MascotaServiceImpl implements MascotaService {
             List<MascotaResponseDTO> mascotaResponseDTOs = mascotaEntities.stream()
                     .map(entity -> modelMapper.map(entity, MascotaResponseDTO.class))
                     .collect(Collectors.toList());
+            System.out.println(mascotaEntities.get(0).getHistoriaClinica());
             return mascotaResponseDTOs;
         }else{
             throw new EntityNotFoundException();
         }
-
     }
+
 
     @Override
     public MascotaResponseDTO saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO) {
@@ -85,8 +86,7 @@ public class MascotaServiceImpl implements MascotaService {
     }
 
     @Override
-    public UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO,
-                                                 HistoriaClinicaRequestDTO historiaClinicaDTO) {
+    public UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO) {
         MascotaEntity mascotaEntity = mascotaJpaRepository.getReferenceById(id);
         if (Objects.isNull(mascotaEntity.getNombre())){
             throw new RuntimeException("Mascota no encontrado");
@@ -96,14 +96,6 @@ public class MascotaServiceImpl implements MascotaService {
         mascotaEntity.setEdad(updateMascotaRequestDTO.getEdad());
         mascotaEntity.setEspecie(updateMascotaRequestDTO.getEspecie());
 
-
-        HistoriaClinicaEntity historiaClinicaEntity = new HistoriaClinicaEntity();
-        historiaClinicaEntity.setFecha(historiaClinicaDTO.getFecha());
-        historiaClinicaEntity.setEvento(historiaClinicaDTO.getEvento());
-        historiaClinicaEntity.setDescripcion(historiaClinicaDTO.getDescripcion());
-        historiaClinicaEntity.setIdMascota(mascotaEntity);
-
-        mascotaEntity.setIdHistoriaClinica(historiaClinicaEntity);
         mascotaJpaRepository.save(mascotaEntity);
         return  modelMapper.map(mascotaEntity, UpdateMascotaRequestDTO.class);
     }

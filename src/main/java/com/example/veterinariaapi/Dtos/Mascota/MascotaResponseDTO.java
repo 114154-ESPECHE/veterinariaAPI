@@ -1,5 +1,6 @@
 package com.example.veterinariaapi.Dtos.Mascota;
 
+import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDTO;
 import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Models.Especie;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class MascotaResponseDTO {
         this.edad = edad;
         this.especie = especie;
         if (cliente != null) {
-            this.nombreCliente = cliente.getNombre(); // Aquí obtienes el nombre del cliente
+            this.nombreCliente = cliente.getNombre();
             this.apellidoCliente = cliente.getApellido();
         }
     }

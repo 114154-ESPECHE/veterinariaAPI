@@ -28,6 +28,6 @@ public class MascotaEntity {
     @Column
     private Especie especie;
     @OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
-    private HistoriaClinicaEntity idHistoriaClinica;
+    private HistoriaClinicaEntity HistoriaClinica;
 
 }
