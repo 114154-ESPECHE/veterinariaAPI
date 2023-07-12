@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -69,7 +70,7 @@ public class MascotaServiceImpl implements MascotaService {
 
 
     @Override
-    public NewMascotaRequestDTO saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO) {
+    public NewMascotaRequestDTO saveMascota(NewMascotaRequestDTO newMascotaRequestDTO) {
         ClienteEntity cliente = clienteJpaRepository.findClienteEntitiesByDni(newMascotaRequestDTO.getDni())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente not found"));
 

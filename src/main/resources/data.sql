@@ -55,5 +55,9 @@ INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5,
 --INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-06-29', 'Consulta', 'Caida de pelo y picazon');
 
 
-
-
+INSERT INTO usuarios (dni, password, fecha_nacimiento, telefono, direccion, email, fecha_alta)
+VALUES (35576827, '123456', '1991-02-13', 3518109725, 'Dean Funes', 'admin@example.com', '2023-07-06');
+INSERT INTO usuarios (dni, password, fecha_nacimiento, telefono, direccion, email, fecha_alta)
+VALUES (987654321, 'abcdef', '1995-05-15', 5555555555, 'Calle B, Ciudad', 'usuario1@example.com', '2023-07-06');
+INSERT INTO usuarios (dni, password, fecha_nacimiento, telefono, direccion, email, fecha_alta)
+VALUES (456789123, 'qwerty', '1988-12-10', 9999999999, 'Calle C, Ciudad', 'usuario2@example.com', '2023-07-06');
