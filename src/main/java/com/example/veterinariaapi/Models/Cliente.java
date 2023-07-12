@@ -5,20 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
     private Long id;
-    @NotNull(message = "Name can't be null")
+    @NotNull
     private String nombre;
-    @NotNull(message = "Last name can't be null")
+    @NotNull
     private String apellido;
+    @NotNull
+    private Long dni;
+    @NotNull
+    private LocalDate fechaNacimiento;
+    @NotNull
+    private Long telefono;
+    @NotNull
     private String direccion;
-    @NotNull(message = "Phonenumber name can't be null")
-    private int telefono;
-    @NotNull(message = "Email name can't be null")
+    @NotNull
     private String email;
-
-
+    @NotNull
+    private LocalDate fechaAlta;
 }
