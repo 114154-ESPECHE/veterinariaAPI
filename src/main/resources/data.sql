@@ -1,17 +1,32 @@
-INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
-VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com');
+-- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
+-- VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com');
+--
+-- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
+-- VALUES ('María', 'López', 'Calle B, Ciudad', 987654321, 'maria@example.com');
+--
+-- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
+-- VALUES ('Pedro', 'González', 'Calle C, Ciudad', 456789123, 'pedro@example.com');
+--
+-- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
+-- VALUES ('Ana', 'Martínez', 'Calle D, Ciudad', 789123456, 'ana@example.com');
+--
+-- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
+-- VALUES ('Luis', 'Rodríguez', 'Calle E, Ciudad', 654321987, 'luis@example.com');
 
-INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
-VALUES ('María', 'López', 'Calle B, Ciudad', 987654321, 'maria@example.com');
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com', 123456789, '2000-01-01', '2023-07-06');
 
-INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
-VALUES ('Pedro', 'González', 'Calle C, Ciudad', 456789123, 'pedro@example.com');
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('María', 'López', 'Calle B, Ciudad', 987654321, 'maria@example.com', 987654321, '2000-02-02', '2023-07-06');
 
-INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
-VALUES ('Ana', 'Martínez', 'Calle D, Ciudad', 789123456, 'ana@example.com');
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('Pedro', 'González', 'Calle C, Ciudad', 456789123, 'pedro@example.com', 456789123, '2000-03-03', '2023-07-06');
 
-INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
-VALUES ('Luis', 'Rodríguez', 'Calle E, Ciudad', 654321987, 'luis@example.com');
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('Ana', 'Martínez', 'Calle D, Ciudad', 789123456, 'ana@example.com', 789123456, '2000-04-04', '2023-07-06');
+
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('Luis', 'Rodríguez', 'Calle E, Ciudad', 654321987, 'luis@example.com', 654321987, '2000-05-05', '2023-07-06');
 
 INSERT INTO mascotas (id_cliente, nombre, color, edad, especie)
 VALUES (3, 'Pichu', 'Negro', 3, 0);

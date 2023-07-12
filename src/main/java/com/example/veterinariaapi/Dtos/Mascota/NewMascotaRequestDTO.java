@@ -1,5 +1,6 @@
 package com.example.veterinariaapi.Dtos.Mascota;
 
+import com.example.veterinariaapi.Entities.ClienteEntity;
 import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Models.Especie;
 import jakarta.validation.constraints.NotNull;
@@ -11,8 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewMascotaRequestDTO {
-
-    private Cliente idCliente;
+    private Long dni;
     private String nombre;
     private String color;
     private int edad;

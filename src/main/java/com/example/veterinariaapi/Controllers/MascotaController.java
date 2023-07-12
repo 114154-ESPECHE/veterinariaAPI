@@ -36,8 +36,8 @@ public class MascotaController {
     }
 
     @PostMapping
-    public ResponseEntity<MascotaResponseDTO> saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO){
-         MascotaResponseDTO mascotaSaved = mascotaService.saveMascota(newMascotaRequestDTO);
+    public ResponseEntity<NewMascotaRequestDTO> saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO){
+        NewMascotaRequestDTO mascotaSaved = mascotaService.saveMascota(newMascotaRequestDTO);
          if (mascotaSaved == null){
              throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pet already exists");
          }

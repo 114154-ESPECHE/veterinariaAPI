@@ -13,6 +13,8 @@ public interface ClienteJpaRepository extends JpaRepository<ClienteEntity, Long>
     Optional<ClienteEntity> findClienteEntitiesByEmail(String email);
     Optional<ClienteEntity> findClienteEntitiesByNombreAndTelefono(String nombre, int telefono);
 
+    Optional<ClienteEntity> findClienteEntitiesByDni(Long dni);
+
     Optional<ClienteEntity> findClienteEntitiesByNombreAndApellido(String nombre, String apellido);
 
 }

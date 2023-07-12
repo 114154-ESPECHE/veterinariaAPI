@@ -17,7 +17,7 @@ public interface MascotaService {
 
     List<MascotaResponseDTO> getByNombre(String nombre);
 
-    MascotaResponseDTO saveMascota(NewMascotaRequestDTO newMascotaRequestDTO);
+    NewMascotaRequestDTO saveMascota(NewMascotaRequestDTO newMascotaRequestDTO);
 
     UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO);
     //UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO, HistoriaClinicaResponseDTO historiaClinicaDTO);

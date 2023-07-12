@@ -69,8 +69,8 @@ public class MascotaServiceImpl implements MascotaService {
 
 
     @Override
-    public MascotaResponseDTO saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO) {
-        ClienteEntity cliente = clienteJpaRepository.findClienteEntitiesByNombreAndApellido(newMascotaRequestDTO.getIdCliente().getNombre(), newMascotaRequestDTO.getIdCliente().getApellido())
+    public NewMascotaRequestDTO saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO) {
+        ClienteEntity cliente = clienteJpaRepository.findClienteEntitiesByDni(newMascotaRequestDTO.getDni())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente not found"));
 
         MascotaEntity mascotaEntity = new MascotaEntity();
@@ -82,7 +82,7 @@ public class MascotaServiceImpl implements MascotaService {
 
         mascotaEntity = mascotaJpaRepository.save(mascotaEntity);
 
-        return modelMapper.map(mascotaEntity, MascotaResponseDTO.class);
+        return modelMapper.map(mascotaEntity, NewMascotaRequestDTO.class);
     }
 
     @Override
