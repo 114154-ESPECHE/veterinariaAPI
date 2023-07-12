@@ -52,7 +52,7 @@ INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (2,
 INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (3, '2023-06-30', 'Vacunación', 'Vacuna antirrábica');
 INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (4, '2023-07-03', 'Consulta', 'Control de peso');
 INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-06-29', 'Vacunación', 'Vacuna anual');
-
+--INSERT INTO HISTORIAMASCOTAS (id_mascota, fecha, evento, descripcion) VALUES (5, '2023-06-29', 'Consulta', 'Caida de pelo y picazon');
 
 
 

@@ -61,7 +61,6 @@ public class MascotaServiceImpl implements MascotaService {
             List<MascotaResponseDTO> mascotaResponseDTOs = mascotaEntities.stream()
                     .map(entity -> modelMapper.map(entity, MascotaResponseDTO.class))
                     .collect(Collectors.toList());
-            System.out.println(mascotaEntities.get(0).getHistoriaClinica());
             return mascotaResponseDTOs;
         }else{
             throw new EntityNotFoundException();
