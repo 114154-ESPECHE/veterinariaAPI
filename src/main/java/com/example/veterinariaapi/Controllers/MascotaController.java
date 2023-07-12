@@ -55,4 +55,11 @@ public class MascotaController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/historia-clinica/{idMascota}")
+    public ResponseEntity<HistoriaClinicaResponseDTO> getHistoriaClinicaByIdMascota(@PathVariable Long idMascota){
+        HistoriaClinicaResponseDTO historiaClinicaResponseDTO = mascotaService.getHistoriaClinica(idMascota);
+        historiaClinicaResponseDTO.setNombre(mascotaService.getMascotaById(idMascota).getNombre());
+        return  ResponseEntity.ok(historiaClinicaResponseDTO);
+    }
+
 }

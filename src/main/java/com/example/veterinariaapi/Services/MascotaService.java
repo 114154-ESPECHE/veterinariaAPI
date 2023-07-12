@@ -23,4 +23,6 @@ public interface MascotaService {
     //UpdateMascotaRequestDTO updateMascota(Long id, UpdateMascotaRequestDTO updateMascotaRequestDTO, HistoriaClinicaResponseDTO historiaClinicaDTO);
 
     void deleteMascota(Long id);
+
+    HistoriaClinicaResponseDTO getHistoriaClinica(Long idMascota);
 }

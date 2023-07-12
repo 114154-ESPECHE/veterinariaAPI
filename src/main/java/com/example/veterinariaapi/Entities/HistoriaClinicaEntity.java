@@ -16,7 +16,6 @@ public class HistoriaClinicaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @OneToOne
     @JoinColumn(name = "id_mascota")
     private MascotaEntity mascota;

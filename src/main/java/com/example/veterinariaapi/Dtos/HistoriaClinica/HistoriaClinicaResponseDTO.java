@@ -1,5 +1,6 @@
 package com.example.veterinariaapi.Dtos.HistoriaClinica;
 
+import com.example.veterinariaapi.Entities.MascotaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,4 @@ public class HistoriaClinicaResponseDTO {
     private LocalDate fecha;
     private String evento;
     private String descripcion;
-
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +36,8 @@ public class MascotaServiceImpl implements MascotaService {
 
     @Override
     public Mascota getMascotaById(Long id) {
-        MascotaEntity mascotaEntity = mascotaJpaRepository.getReferenceById(id);
-        if (mascotaEntity == null){
+        MascotaEntity mascotaEntity = mascotaJpaRepository.getMascotaEntitiesById(id);
+        if (Objects.isNull(mascotaEntity)){
             throw new EntityNotFoundException();
         }
         Mascota mascota = modelMapper.map(mascotaEntity, Mascota.class);
@@ -107,6 +108,16 @@ public class MascotaServiceImpl implements MascotaService {
             throw new RuntimeException("Mascota no encontrado");
         }
         mascotaJpaRepository.delete(mascotaEntity);
+    }
+
+    @Override
+    public HistoriaClinicaResponseDTO getHistoriaClinica(Long idMascota) {
+        MascotaEntity mascota = mascotaJpaRepository.getMascotaEntitiesById(idMascota);
+        if (Objects.isNull(mascota.getId())){
+            throw new RuntimeException("Mascota no encontrado");
+        }
+        HistoriaClinicaEntity historiaClinicaEntity = mascota.getHistoriaClinica();
+        return modelMapper.map(historiaClinicaEntity, HistoriaClinicaResponseDTO.class);
     }
 
 
