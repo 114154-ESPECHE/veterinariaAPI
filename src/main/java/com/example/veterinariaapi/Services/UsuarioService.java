@@ -1,6 +1,7 @@
 package com.example.veterinariaapi.Services;
 
 import com.example.veterinariaapi.Dtos.Usuario.NewUsuarioRequestDTO;
+import com.example.veterinariaapi.Dtos.Usuario.UpdateUsuarioRequestDTO;
 import com.example.veterinariaapi.Dtos.Usuario.UsuarioRequestDTO;
 import com.example.veterinariaapi.Entities.UsuarioEntity;
 import com.example.veterinariaapi.Models.Usuario;
@@ -13,5 +14,5 @@ public interface UsuarioService {
     UsuarioEntity getUsuarioByEmail(String email);
     UsuarioRequestDTO saveUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO);
     void deleteUsuario(Long dni);
-    UsuarioEntity updateUsuario(Long dni);
+    UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity);
 }

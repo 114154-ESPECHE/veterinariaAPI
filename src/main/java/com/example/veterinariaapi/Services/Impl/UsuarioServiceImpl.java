@@ -1,12 +1,12 @@
 package com.example.veterinariaapi.Services.Impl;
 
 import com.example.veterinariaapi.Dtos.Usuario.NewUsuarioRequestDTO;
+import com.example.veterinariaapi.Dtos.Usuario.UpdateUsuarioRequestDTO;
 import com.example.veterinariaapi.Dtos.Usuario.UsuarioRequestDTO;
 import com.example.veterinariaapi.Entities.UsuarioEntity;
 import com.example.veterinariaapi.Models.Usuario;
 import com.example.veterinariaapi.Repositories.jpa.UsuarioJpaRepository;
 import com.example.veterinariaapi.Services.UsuarioService;
-import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +39,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioRequestDTO saveUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO) {
-        Optional<UsuarioEntity> user = usuarioJpaRepository.getUsuarioEntitiesByDni(newUsuarioRequestDTO.getDni())
-        if (user.isPresent()) {
+        UsuarioEntity user = usuarioJpaRepository.getUsuarioEntitiesByDni(newUsuarioRequestDTO.getDni());
+        if (Objects.isNull(user)) {
             throw new RuntimeException("The User exist");
         }
         UsuarioEntity newUsuario = modelMapper.map(newUsuarioRequestDTO, UsuarioEntity.class);
@@ -50,11 +50,27 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void deleteUsuario(Long dni) {
-
+        UsuarioEntity usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
+        if (Objects.isNull(usuario)){
+            throw new RuntimeException("The User exist");
+        }
+        usuarioJpaRepository.delete(usuario);
     }
 
     @Override
-    public UsuarioEntity updateUsuario(Long dni) {
-        return null;
+    public UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity) {
+        UsuarioEntity usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
+        if (Objects.isNull(usuario.getDni())){
+            throw new RuntimeException("The User exist");
+        }
+        usuario.setPassword(usuarioEntity.getPassword());
+        usuario.setFechaNacimiento(usuarioEntity.getFechaNacimiento());
+        usuario.setTelefono(usuarioEntity.getTelefono());
+        usuario.setDireccion(usuarioEntity.getDireccion());
+        usuario.setEmail(usuarioEntity.getEmail());
+
+        return modelMapper.map(usuario, UpdateUsuarioRequestDTO.class);
     }
+
+
 }
