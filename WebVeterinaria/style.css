@@ -1,0 +1,27 @@
+
+    :root {
+      --carousel-caption-color: white;
+      --carousel-caption-bg-color: rgba(0, 0, 0, 0.5);
+      --carousel-control-color: white;
+      --carousel-control-bg-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .carousel-dark .carousel-indicators [data-bs-target] {
+      filter: invert(1) grayscale(100%);
+    }
+
+    .carousel-dark .carousel-indicators [data-bs-target]:hover {
+      filter: invert(0) grayscale(0%);
+    }
+
+    .carousel-dark .carousel-caption {
+      color: var(--carousel-caption-color);
+      background-color: var(--carousel-caption-bg-color);
+    }
+
+    .carousel-dark .carousel-control-prev,
+    .carousel-dark .carousel-control-next {
+      color: var(--carousel-control-color);
+      background-color: var(--carousel-control-bg-color);
+    }
+ 
