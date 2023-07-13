@@ -1,9 +1,9 @@
 
     :root {
-      --carousel-caption-color: white;
-      --carousel-caption-bg-color: rgba(0, 0, 0, 0.5);
-      --carousel-control-color: white;
-      --carousel-control-bg-color: rgba(0, 0, 0, 0.5);
+      --carousel-caption-color: black;
+      --carousel-caption-bg-color: rgba(0, 0, 0, 0);
+      --carousel-control-color: Yellow;
+      --carousel-control-bg-color: rgba(0, 0, 0, 0);
     }
 
     .carousel-dark .carousel-indicators [data-bs-target] {
