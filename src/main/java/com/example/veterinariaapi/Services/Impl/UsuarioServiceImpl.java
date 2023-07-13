@@ -21,14 +21,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioEntity getUsuarioEntityByDni(Long dni) {
         UsuarioEntity usuarioEntity = usuarioJpaRepository.getReferenceById(dni);
         if (Objects.isNull(usuarioEntity.getDni())){
-            throw new RuntimeException("Mascota no encontrado");
+            throw new RuntimeException("Usuario no encontrado");
         }
         return modelMapper.map(usuarioEntity, UsuarioEntity.class);
     }
 
     @Override
     public UsuarioEntity getUsuarioByEmail(String email) {
-        //UsuarioEntity usuarioEntity = usuarioJpaRepository.getUsuarioEntitiesByEmail(email)
-        return null;
+        UsuarioEntity usuarioEntity = usuarioJpaRepository.getUsuarioEntitiesByEmail(email);
+        if (Objects.isNull(usuarioEntity.getEmail())){
+            throw new RuntimeException("Usuario no encontrado");
+        }
+        return usuarioEntity;
     }
 }
