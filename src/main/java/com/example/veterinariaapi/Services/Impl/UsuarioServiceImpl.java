@@ -1,5 +1,7 @@
 package com.example.veterinariaapi.Services.Impl;
 
+import com.example.veterinariaapi.Dtos.Usuario.NewUsuarioRequestDTO;
+import com.example.veterinariaapi.Dtos.Usuario.UsuarioRequestDTO;
 import com.example.veterinariaapi.Entities.UsuarioEntity;
 import com.example.veterinariaapi.Models.Usuario;
 import com.example.veterinariaapi.Repositories.jpa.UsuarioJpaRepository;
@@ -33,5 +35,26 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new RuntimeException("Usuario no encontrado");
         }
         return usuarioEntity;
+    }
+
+    @Override
+    public UsuarioRequestDTO saveUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO) {
+        Optional<UsuarioEntity> user = usuarioJpaRepository.getUsuarioEntitiesByDni(newUsuarioRequestDTO.getDni())
+        if (user.isPresent()) {
+            throw new RuntimeException("The User exist");
+        }
+        UsuarioEntity newUsuario = modelMapper.map(newUsuarioRequestDTO, UsuarioEntity.class);
+        usuarioJpaRepository.save(newUsuario);
+        return modelMapper.map(newUsuario, UsuarioRequestDTO.class);
+    }
+
+    @Override
+    public void deleteUsuario(Long dni) {
+
+    }
+
+    @Override
+    public UsuarioEntity updateUsuario(Long dni) {
+        return null;
     }
 }
