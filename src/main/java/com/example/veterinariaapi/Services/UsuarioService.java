@@ -9,4 +9,5 @@ public interface UsuarioService {
 
     UsuarioEntity getUsuarioEntityByDni(Long dni);
     UsuarioEntity getUsuarioByEmail(String email);
+    UsuarioEntity saveUsuario(UsuarioEntity usuarioEntity);
 }
