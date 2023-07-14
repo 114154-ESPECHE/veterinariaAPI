@@ -50,10 +50,11 @@
                   <label for="dni">Ingrese el DNI del cliente:</label>
                   <input type="text" class="form-control" placeholder="DNI" name="dni" id="dniInput">
                 </div>
-                <div class="col-lg-4">
-                  <br>
-                  <button type="submit" class="btn btn-primary" name="dni" id="">Buscar</button>
-                </div>
+                
+              </div>
+              <div class="col-lg-4">
+                <br>
+                <button type="submit" class="btn btn-primary" name="dni" id="">Buscar</button>
               </div>
             </form>
           </div>
@@ -98,11 +99,12 @@
         console.log(response);
         // Actualiza los campos de entrada en tu front-end con los datos obtenidos
         $('#inputDni').val(response.dni);
+        $('#inputDni').prop('disabled', true);
         $('#inputFechaNacimiento').val(formatDate(response.fechaNacimiento));
         $('#inputTelefono').val(response.telefono);
         $('#inputDireccion').val(response.direccion);
         $('#inputEmail').val(response.email);
-        // ...
+        
       },
       error: function(error) {
         console.error('Error al obtener el usuario:', error);
