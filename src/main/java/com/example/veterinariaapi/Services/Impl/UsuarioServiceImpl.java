@@ -4,15 +4,13 @@ import com.example.veterinariaapi.Dtos.Usuario.NewUsuarioRequestDTO;
 import com.example.veterinariaapi.Dtos.Usuario.UpdateUsuarioRequestDTO;
 import com.example.veterinariaapi.Dtos.Usuario.UsuarioRequestDTO;
 import com.example.veterinariaapi.Entities.UsuarioEntity;
-import com.example.veterinariaapi.Models.Usuario;
 import com.example.veterinariaapi.Repositories.jpa.UsuarioJpaRepository;
 import com.example.veterinariaapi.Services.UsuarioService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Objects;
-import java.util.Optional;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
@@ -21,7 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     UsuarioJpaRepository usuarioJpaRepository;
     @Override
     public UsuarioEntity getUsuarioEntityByDni(Long dni) {
-        UsuarioEntity usuarioEntity = usuarioJpaRepository.getReferenceById(dni);
+        UsuarioEntity usuarioEntity = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
         if (Objects.isNull(usuarioEntity.getDni())){
             throw new RuntimeException("Usuario no encontrado");
         }
