@@ -8,10 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
     <title>Buscar Cliente</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Principal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,25 +39,85 @@
     </div>
     <br>
     <div class="container-fluid">
-        <h3>Buscar Cliente</h3>
-        <br>
-        <div class="form">
+      <div class="row">
+        <div class="col-lg-6" id="buscarClienteForm">
+          <h3>Buscar Cliente</h3>
+          <br>
+          <div class="form">
             <form>
-                <div class="row">
-                  <div class="col-lg-2">
-                    <label for="dni">Ingrese el DNI del cliente:</label>
-                    <input type="text" class="form-control" placeholder="DNI" name="dni">
-                    <br>
-                    <button type="submit" class="btn btn-primary" name="dni" id="">Buscar</button>
-                  </div>
+              <div class="row">
+                <div class="col-lg-8">
+                  <label for="dni">Ingrese el DNI del cliente:</label>
+                  <input type="text" class="form-control" placeholder="DNI" name="dni" id="dniInput">
                 </div>
-              </form>
+                <div class="col-lg-4">
+                  <br>
+                  <button type="submit" class="btn btn-primary" name="dni" id="">Buscar</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+        <div class="col-lg-6" id="resultadosCliente">
+          <h4>Datos del Usuario:</h4>
+          <p><strong>DNI:</strong> <span id="dniCliente"></span></p>
+          <input type="text" id="inputDni">
+          <p><strong>Fecha de Nacimiento:</strong> <span id="fechaNacimientoCliente"></span></p>
+          <input type="date" id="inputFechaNacimiento">
+          <p><strong>Telefono:</strong> <span id="telefonoCliente"></span></p>
+          <input type="text" id="inputTelefono">
+          <p><strong>Direccion:</strong> <span id="direccionCliente"></span></p>
+          <input type="text" id="inputDireccion">
+          <p><strong>Email:</strong> <span id="emailCliente"></span></p>
+          <input type="text" id="inputEmail">
+          <br>
+        </div>
+      </div>
     </div>
+    
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
- 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="main.js"></script>
+
   </body>
+  <script>
+    $(document).ready(function() {
+  $('#buscarClienteForm').submit(function(event) {
+    event.preventDefault();
+
+    var dni = $('#dniInput').val();
+
+    $.ajax({
+      url: 'http://localhost:8080/usuarios/getByDni/' + dni,
+      type: 'GET',
+      success: function(response) {
+        // Procesa los datos del usuario obtenidos en la respuesta
+        console.log(response);
+        // Actualiza los campos de entrada en tu front-end con los datos obtenidos
+        $('#inputDni').val(response.dni);
+        $('#inputFechaNacimiento').val(formatDate(response.fechaNacimiento));
+        $('#inputTelefono').val(response.telefono);
+        $('#inputDireccion').val(response.direccion);
+        $('#inputEmail').val(response.email);
+        // ...
+      },
+      error: function(error) {
+        console.error('Error al obtener el usuario:', error);
+      }
+    });
+  });
+});
+function formatDate(date) {
+  var formattedDate = new Date(date);
+  var year = formattedDate.getFullYear();
+  var month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
+  var day = ('0' + formattedDate.getDate()).slice(-2);
+  return year + '-' + month + '-' + day;
+}
+
+
+  </script>
 </html>
