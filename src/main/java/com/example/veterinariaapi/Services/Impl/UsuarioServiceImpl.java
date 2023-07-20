@@ -11,8 +11,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
@@ -20,9 +23,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     UsuarioJpaRepository usuarioJpaRepository;
     @Override
-    public UsuarioEntity getUsuarioEntityByDni(Long dni) {
-        UsuarioEntity usuarioEntity = usuarioJpaRepository.getReferenceById(dni);
-        if (Objects.isNull(usuarioEntity.getDni())){
+    public UsuarioEntity getUsuarioByDni(Long dni) {
+        Optional <UsuarioEntity> usuarioEntity = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
+        if (usuarioEntity.isEmpty()){
             throw new RuntimeException("Usuario no encontrado");
         }
         return modelMapper.map(usuarioEntity, UsuarioEntity.class);
@@ -38,31 +41,40 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioRequestDTO saveUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO) {
-        UsuarioEntity user = usuarioJpaRepository.getUsuarioEntitiesByDni(newUsuarioRequestDTO.getDni());
-        if (Objects.isNull(user)) {
-            throw new RuntimeException("The User exist");
+    public UsuarioRequestDTO createUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO) {
+        Optional<UsuarioEntity> usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(newUsuarioRequestDTO.getDni());
+        if (usuario.isPresent()){
+            throw new RuntimeException("El usuario ya existe");
         }
-        UsuarioEntity newUsuario = modelMapper.map(newUsuarioRequestDTO, UsuarioEntity.class);
-        usuarioJpaRepository.save(newUsuario);
-        return modelMapper.map(newUsuario, UsuarioRequestDTO.class);
+        LocalDate fechaAlta = LocalDate.now();
+        UsuarioEntity usuarioCreated = new UsuarioEntity();
+        usuarioCreated.setDni(newUsuarioRequestDTO.getDni());
+        usuarioCreated.setFechaNacimiento(newUsuarioRequestDTO.getFechaNacimiento());
+        usuarioCreated.setTelefono(newUsuarioRequestDTO.getTelefono());
+        usuarioCreated.setDireccion(newUsuarioRequestDTO.getDireccion());
+        usuarioCreated.setEmail(newUsuarioRequestDTO.getEmail());
+        usuarioCreated.setFechaAlta(fechaAlta);
+        usuarioJpaRepository.save(usuarioCreated);
+        return modelMapper.map(usuarioCreated, UsuarioRequestDTO.class);
     }
+
 
     @Override
     public void deleteUsuario(Long dni) {
-        UsuarioEntity usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
-        if (Objects.isNull(usuario)){
+        Optional <UsuarioEntity> usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
+        if (usuario.isPresent()){
             throw new RuntimeException("The User exist");
         }
-        usuarioJpaRepository.delete(usuario);
+        usuarioJpaRepository.delete(usuario.get());
     }
 
     @Override
     public UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity) {
-        UsuarioEntity usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
-        if (Objects.isNull(usuario.getDni())){
+        Optional <UsuarioEntity> usuarioOptional = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
+        if (usuarioOptional.isPresent()){
             throw new RuntimeException("The User exist");
         }
+        UsuarioEntity usuario = usuarioOptional.get();
         usuario.setPassword(usuarioEntity.getPassword());
         usuario.setFechaNacimiento(usuarioEntity.getFechaNacimiento());
         usuario.setTelefono(usuarioEntity.getTelefono());

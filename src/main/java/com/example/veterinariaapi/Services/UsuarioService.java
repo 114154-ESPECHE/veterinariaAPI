@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UsuarioService {
 
-    UsuarioEntity getUsuarioEntityByDni(Long dni);
+    UsuarioEntity getUsuarioByDni(Long dni);
     UsuarioEntity getUsuarioByEmail(String email);
-    UsuarioRequestDTO saveUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO);
+    UsuarioRequestDTO createUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO);
     void deleteUsuario(Long dni);
     UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity);
 }

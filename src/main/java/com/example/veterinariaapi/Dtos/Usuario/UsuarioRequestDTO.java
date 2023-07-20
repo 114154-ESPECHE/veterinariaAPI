@@ -12,5 +12,7 @@ import java.time.LocalDate;
 public class UsuarioRequestDTO {
     private Long dni;
     private LocalDate fechaNacimiento;
+    private Long telefono;
+    private String direccion;
     private String email;
 }

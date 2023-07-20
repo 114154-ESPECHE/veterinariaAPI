@@ -23,5 +23,4 @@ public class NewUsuarioRequestDTO {
 
     private String email;
 
-    private LocalDate fechaAlta;
 }

@@ -25,4 +25,6 @@ public interface MascotaService {
     void deleteMascota(Long id);
 
     HistoriaClinicaResponseDTO getHistoriaClinica(Long idMascota);
+
+
 }

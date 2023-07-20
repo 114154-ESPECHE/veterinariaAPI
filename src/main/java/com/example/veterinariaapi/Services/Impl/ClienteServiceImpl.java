@@ -54,8 +54,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponseDTO saveCliente(NewClienteRequestDTO newClienteRequestDTO) {
-        Optional<ClienteEntity> cliente= clienteJpaRepository.findClienteEntitiesByNombreAndApellido(newClienteRequestDTO.getNombre(),newClienteRequestDTO.getApellido());
-        if (cliente.isPresent()){
+        Optional<ClienteEntity> clienteOptional= clienteJpaRepository.findClienteEntitiesByNombreAndApellido(newClienteRequestDTO.getNombre(),newClienteRequestDTO.getApellido());
+        if (clienteOptional.isPresent()){
             throw new RuntimeException("The Client exist");
         }
         ClienteEntity clienteEntity = modelMapper.map(newClienteRequestDTO, ClienteEntity.class);
