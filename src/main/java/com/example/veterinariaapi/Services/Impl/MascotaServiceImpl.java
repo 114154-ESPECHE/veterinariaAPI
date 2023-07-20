@@ -122,7 +122,7 @@ public class MascotaServiceImpl implements MascotaService {
         List<HistoriaClinicaResponseDTO> historiaClinicaResponseDTOList = historiaClinicaEntityList.stream()
                 .map(entity -> {
                     HistoriaClinicaResponseDTO dto = modelMapper.map(entity, HistoriaClinicaResponseDTO.class);
-                    dto.setNombre(nombreMascota); // Establecer el nombre de la mascota en el DTO
+                    dto.setNombre(nombreMascota);
                     return dto;
                 })
                 .collect(Collectors.toList());
