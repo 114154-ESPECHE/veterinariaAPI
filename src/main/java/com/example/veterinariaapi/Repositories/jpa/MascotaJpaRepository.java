@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface MascotaJpaRepository extends JpaRepository<MascotaEntity, Long> {
     Optional<MascotaEntity> findMascotaEntitiesByNombreAndEspecie(String nombre, Especie especie);
     List<MascotaEntity> findMascotaEntitiesByNombre(String nombre);
+    List<MascotaEntity> findMascotaEntitiesById(Long id);
     Optional<MascotaEntity> findAllByEspecie(Especie especie);
 
     MascotaEntity getMascotaEntitiesById(Long id);

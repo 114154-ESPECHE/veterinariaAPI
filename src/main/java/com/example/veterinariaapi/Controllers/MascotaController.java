@@ -4,6 +4,7 @@ import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDT
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
+import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Mascota;
 import com.example.veterinariaapi.Services.MascotaService;
 import jakarta.validation.Valid;
@@ -56,10 +57,10 @@ public class MascotaController {
     }
 
     @GetMapping("/historia-clinica/{idMascota}")
-    public ResponseEntity<HistoriaClinicaResponseDTO> getHistoriaClinicaByIdMascota(@PathVariable Long idMascota){
-        HistoriaClinicaResponseDTO historiaClinicaResponseDTO = mascotaService.getHistoriaClinica(idMascota);
-        historiaClinicaResponseDTO.setNombre(mascotaService.getMascotaById(idMascota).getNombre());
-        return  ResponseEntity.ok(historiaClinicaResponseDTO);
+    public ResponseEntity<List<HistoriaClinicaResponseDTO>> getHistoriaClinicaByIdMascota(@PathVariable Long idMascota){
+        List<HistoriaClinicaResponseDTO> historiaClinicaResponseDTOList = mascotaService.getHistoriaClinica(idMascota);
+
+        return  ResponseEntity.ok(historiaClinicaResponseDTOList);
     }
 
 }

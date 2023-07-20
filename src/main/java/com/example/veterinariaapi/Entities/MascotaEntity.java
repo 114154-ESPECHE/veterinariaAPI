@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "mascotas")
 @Data
@@ -27,7 +29,7 @@ public class MascotaEntity {
     private int edad;
     @Column
     private Especie especie;
-    @OneToOne(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
-    private HistoriaClinicaEntity HistoriaClinica;
+    @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistoriaClinicaEntity> HistoriaClinicaList;
 
 }

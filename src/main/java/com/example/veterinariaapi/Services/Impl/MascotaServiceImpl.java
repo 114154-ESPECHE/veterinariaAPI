@@ -111,13 +111,29 @@ public class MascotaServiceImpl implements MascotaService {
     }
 
     @Override
-    public HistoriaClinicaResponseDTO getHistoriaClinica(Long idMascota) {
+    public List<HistoriaClinicaResponseDTO> getHistoriaClinica(Long idMascota) {
+        String nombreMascota = getNombreMascotaById(idMascota);
         MascotaEntity mascota = mascotaJpaRepository.getMascotaEntitiesById(idMascota);
         if (Objects.isNull(mascota.getId())){
-            throw new RuntimeException("Mascota no encontrado");
+            throw new RuntimeException("Mascota no encontrada");
         }
-        HistoriaClinicaEntity historiaClinicaEntity = mascota.getHistoriaClinica();
-        return modelMapper.map(historiaClinicaEntity, HistoriaClinicaResponseDTO.class);
+        List<HistoriaClinicaEntity> historiaClinicaEntityList = mascota.getHistoriaClinicaList();
+
+        List<HistoriaClinicaResponseDTO> historiaClinicaResponseDTOList = historiaClinicaEntityList.stream()
+                .map(entity -> {
+                    HistoriaClinicaResponseDTO dto = modelMapper.map(entity, HistoriaClinicaResponseDTO.class);
+                    dto.setNombre(nombreMascota); // Establecer el nombre de la mascota en el DTO
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return historiaClinicaResponseDTOList;
+    }
+
+    @Override
+    public String getNombreMascotaById(Long idMascota) {
+        MascotaEntity mascota = mascotaJpaRepository.getMascotaEntitiesById(idMascota);
+        return mascota.getNombre();
     }
 
 
