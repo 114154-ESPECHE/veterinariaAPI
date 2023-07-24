@@ -8,6 +8,7 @@ import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Repositories.jpa.ClienteJpaRepository;
 import com.example.veterinariaapi.Services.ClienteService;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,19 +66,34 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    @Transactional
     public Cliente updateCliente(Long id, Cliente cliente) {
         ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
-        if (Objects.isNull(clienteEntity.getId())){
-            throw new RuntimeException("Cliente no encontrado");
+        if (clienteEntity.getId() == null) {
+            throw new EntityNotFoundException("Cliente no encontrado con el ID: " + id);
         }
-        clienteEntity.setNombre(cliente.getNombre());
-        clienteEntity.setApellido(cliente.getApellido());
-        clienteEntity.setDireccion(cliente.getDireccion());
-        clienteEntity.setTelefono(cliente.getTelefono());
-        clienteEntity.setEmail(cliente.getEmail());
+
+        if (cliente.getNombre() != null) {
+            clienteEntity.setNombre(cliente.getNombre());
+        }
+        if (cliente.getApellido() != null) {
+            clienteEntity.setApellido(cliente.getApellido());
+        }
+        if (cliente.getDireccion() != null) {
+            clienteEntity.setDireccion(cliente.getDireccion());
+        }
+        if (cliente.getTelefono() != null) {
+            clienteEntity.setTelefono(cliente.getTelefono());
+        }
+        if (cliente.getEmail() != null) {
+            clienteEntity.setEmail(cliente.getEmail());
+        }
+
         clienteJpaRepository.save(clienteEntity);
-        return modelMapper.map(cliente,Cliente.class);
+
+        return modelMapper.map(clienteEntity, Cliente.class);
     }
+
 
     @Override
     public UpdateClienteRequestDTO updateClienteDTO(Long id, Cliente cliente) {
