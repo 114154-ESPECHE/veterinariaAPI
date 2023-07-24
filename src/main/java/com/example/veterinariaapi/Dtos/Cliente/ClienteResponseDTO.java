@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class ClienteResponseDTO {
     private String nombre;
     private String apellido;
-    private int telefono;
+    private Long telefono;
     private String email;
 }
