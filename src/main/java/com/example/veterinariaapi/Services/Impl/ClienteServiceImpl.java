@@ -43,12 +43,12 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteResponseDTO getClienteByNombreAndTelefono(String nombre, int telefono) {
+    public ClienteResponseDTO getClienteByNombreAndTelefono(String nombre, Long telefono) {
         Optional<ClienteEntity> clienteEntity = clienteJpaRepository.findClienteEntitiesByNombreAndTelefono(nombre, telefono);
-        if (Objects.isNull(clienteEntity)){
+        if (!clienteEntity.isPresent()){
             throw new EntityNotFoundException();
         }
-        ClienteResponseDTO cliente = modelMapper.map(clienteEntity, ClienteResponseDTO.class);
+        ClienteResponseDTO cliente = modelMapper.map(clienteEntity.get(), ClienteResponseDTO.class);
         return cliente;
     }
 

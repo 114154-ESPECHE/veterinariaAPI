@@ -14,7 +14,7 @@ public interface ClienteService {
     ClienteResponseDTO getClienteResponseDTOById(Long id);//para el negocio no esta bien este metodo
     //ya que un cliente no sabria su id
 
-    ClienteResponseDTO getClienteByNombreAndTelefono(String nobre, int telefono);
+    ClienteResponseDTO getClienteByNombreAndTelefono(String nobre, Long telefono);
 
     ClienteResponseDTO saveCliente(NewClienteRequestDTO newClienteRequestDTO);
 

@@ -22,7 +22,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping("/cliente/nombreAndtelefono")
-    public ResponseEntity<ClienteResponseDTO> getClienteByNombreAndTelefono(@RequestParam String nombre,@RequestParam int telefono){
+    public ResponseEntity<ClienteResponseDTO> getClienteByNombreAndTelefono(@RequestParam String nombre,@RequestParam Long telefono){
         ClienteResponseDTO clienteResponseDTO = clienteService.getClienteByNombreAndTelefono(nombre, telefono);
         return ResponseEntity.ok(clienteResponseDTO);
     }

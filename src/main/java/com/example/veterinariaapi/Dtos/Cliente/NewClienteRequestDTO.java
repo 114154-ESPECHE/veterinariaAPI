@@ -11,6 +11,6 @@ public class NewClienteRequestDTO {
     private String nombre;
     private String apellido;
     private String direccion;
-    private int telefono;
+    private Long telefono;
     private String email;
 }
