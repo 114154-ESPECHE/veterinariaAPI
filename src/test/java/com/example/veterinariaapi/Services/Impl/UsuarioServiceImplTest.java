@@ -10,32 +10,45 @@ import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class UsuarioServiceImplTest {
 
-    @Mock
-    ModelMapper modelMapper;
-    @Mock
-    UsuarioJpaRepository usuarioJpaRepository;
+        @Mock
+        ModelMapper modelMapper;
+        @Mock
+        UsuarioJpaRepository usuarioJpaRepository;
 
-    @InjectMocks
-    UsuarioServiceImpl usuarioService;
+        @InjectMocks
+        UsuarioServiceImpl usuarioService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+        private UsuarioEntity usuarioEntity;
 
-    @Test
-    void getUsuarioByDni() {
-        UsuarioEntity usuarioEntity = new UsuarioEntity();
-        usuarioEntity.setDni(35576827L);
-        usuarioEntity.setEmail("string@string.com");
+        @BeforeEach
+        void setUp() {
+            MockitoAnnotations.initMocks(this);
 
-        when()
-    }
+            usuarioEntity = new UsuarioEntity();
+            usuarioEntity.setDni(35576827L);
+            usuarioEntity.setPassword("123456");
+            usuarioEntity.setTelefono(123456L);
+            usuarioEntity.setDireccion("llslssllssl");
+            usuarioEntity.setEmail("arroba@arroba.com");
+        }
+
+        @Test
+        void getUsuarioByDni() {
+            when(usuarioJpaRepository.getUsuarioEntitiesByDni(usuarioEntity.getDni())).thenReturn(Optional.of(usuarioEntity));
+            when(modelMapper.map(usuarioEntity, UsuarioEntity.class)).thenReturn(usuarioEntity);
+
+            UsuarioEntity result = usuarioService.getUsuarioByDni(usuarioEntity.getDni());
+
+            assertNotNull(result);
+            assertEquals(35576827L,result.getDni());
+        }
 
     @Test
     void getUsuarioByEmail() {
