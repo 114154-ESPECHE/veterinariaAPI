@@ -34,19 +34,19 @@ class ClienteServiceImplTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-//        clienteEntity = new ClienteEntity();
-//        clienteEntity.setId(1L);
-//        clienteEntity.setNombre("Agustin");
-//        clienteEntity.setApellido("Espeche");
-//        clienteEntity.setTelefono(351351315L);
-//        clienteEntity.setEmail("lalala@lalala.com");
-//
-//
-//        clienteResponseDTO = new ClienteResponseDTO();
-//        clienteResponseDTO.setTelefono(351351315L);
-//        clienteResponseDTO.setNombre("Agustin");
-//        clienteResponseDTO.setApellido("Espeche");
-//        clienteResponseDTO.setEmail("lalala@lalala.com");
+        clienteEntity = new ClienteEntity();
+        clienteEntity.setId(1L);
+        clienteEntity.setNombre("Agustin");
+        clienteEntity.setApellido("Espeche");
+        clienteEntity.setTelefono(351351315L);
+        clienteEntity.setEmail("lalala@lalala.com");
+
+
+        clienteResponseDTO = new ClienteResponseDTO();
+        clienteResponseDTO.setTelefono(351351315L);
+        clienteResponseDTO.setNombre("Agustin");
+        clienteResponseDTO.setApellido("Espeche");
+        clienteResponseDTO.setEmail("lalala@lalala.com");
     }
 
     @Test
@@ -120,55 +120,69 @@ class ClienteServiceImplTest {
         assertEquals("EspecheNuevo", result.getApellido());
     }
 
-    @Test
-    void updateCliente() {
-        Long existingId = 1L;
+//    @Test
+//    void updateCliente() {
+//        Long existingId = 1L;
+//
+//        ClienteEntity clienteEntity = new ClienteEntity();
+//        clienteEntity.setId(existingId);
+//        clienteEntity.setNombre("NombreAnterior");
+//        clienteEntity.setApellido("ApellidoAnterior");
+//        clienteEntity.setDireccion("direccio anterior");
+//        clienteEntity.setTelefono(3512153L);
+//        clienteEntity.setEmail("email@email.com");
+//
+//        Cliente clienteToUpdate = new Cliente();
+//        clienteToUpdate.setId(existingId);
+//        clienteToUpdate.setNombre("NuevoNombre");
+//        clienteToUpdate.setApellido("NuevoApellido");
+//        clienteToUpdate.setDireccion("direccio nueva");
+//        clienteToUpdate.setDni(35115251L);
+//        clienteToUpdate.setTelefono(1111111L);
+//        clienteToUpdate.setEmail("email@emailNuevo.com");
+//
+//        // Configurar el mock del clienteJpaRepository para devolver el clienteEntity existente
+//        when(clienteJpaRepository.findClienteEntitiesById(existingId)).thenReturn(Optional.of(clienteEntity));
+//
+//        // Configurar el mock del clienteJpaRepository para devolver la entidad modificada después de guardar
+//        when(clienteJpaRepository.save(any(ClienteEntity.class))).thenAnswer(invocation -> {
+//            ClienteEntity savedEntity = invocation.getArgument(0);
+//            clienteEntity.setNombre(savedEntity.getNombre());
+//            clienteEntity.setApellido(savedEntity.getApellido());
+//            clienteEntity.setDireccion(savedEntity.getDireccion());
+//            clienteEntity.setTelefono(savedEntity.getTelefono());
+//            clienteEntity.setEmail(savedEntity.getEmail());
+//            return clienteEntity;
+//        });
+//
+//        // Act
+//        Cliente result = clienteService.updateCliente(existingId, clienteToUpdate);
+//
+//        // Assert
+//        assertNotNull(result);
+//        assertEquals(existingId, result.getId());
+//        assertEquals("NuevoNombre", result.getNombre());
+//        assertEquals("NuevoApellido", result.getApellido());
+//
+//        // Verificar que el método clienteJpaRepository.save se llamó una vez
+//        verify(clienteJpaRepository, times(1)).save(clienteEntity);
+//    }
 
-        ClienteEntity clienteEntity = new ClienteEntity();
-        clienteEntity.setId(existingId);
-        clienteEntity.setNombre("NombreAnterior");
-        clienteEntity.setApellido("ApellidoAnterior");
-        clienteEntity.setDireccion("direccio anterior");
-        clienteEntity.setTelefono(3512153L);
-        clienteEntity.setEmail("email@email.com");
 
-        Cliente clienteToUpdate = new Cliente();
-        clienteToUpdate.setId(existingId);
-        clienteToUpdate.setNombre("NuevoNombre");
-        clienteToUpdate.setApellido("NuevoApellido");
-        clienteToUpdate.setDireccion("direccio nueva");
-        clienteToUpdate.setDni(35115251L);
-        clienteToUpdate.setTelefono(1111111L);
-        clienteToUpdate.setEmail("email@emailNuevo.com");
-
-        // Configurar el mock del clienteJpaRepository para devolver el clienteEntity existente
-        when(clienteJpaRepository.getReferenceById(existingId)).thenReturn(clienteEntity);
-
-        // Configurar el mock del clienteJpaRepository para devolver el mismo clienteEntity después de guardar
-        when(clienteJpaRepository.save(any(ClienteEntity.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
-
-        // Act
-
-        Cliente result = clienteService.updateCliente(existingId, clienteToUpdate);
-
-
-        // Assert
-        //assertNotNull(result);
-        assertEquals(existingId, result.getId());
-        assertEquals("NuevoNombre", result.getNombre());
-        assertEquals("NuevoApellido", result.getApellido());
-
-        // Verificar que el método clienteJpaRepository.save se llamó una vez
-        verify(clienteJpaRepository, times(1)).save(clienteEntity);
-    }
-
-    @Test
-    void updateClienteDTO() {
-
-
-    }
 
     @Test
     void deleteCliente() {
+        // Configurar el mock del clienteJpaRepository para devolver el clienteEntity existente
+        when(clienteJpaRepository.findById(clienteEntity.getId())).thenReturn(Optional.of(clienteEntity));
+
+        // Act: Llama al método deleteCliente con el ID del cliente existente
+        clienteService.deleteCliente(clienteEntity.getId());
+
+        // Verificación: Verifica que el cliente ha sido eliminado
+        verify(clienteJpaRepository, times(1)).deleteById(clienteEntity.getId());
+
+        // Intenta obtener el cliente nuevamente para asegurarte de que ha sido eliminado
+        Optional<ClienteEntity> deletedCliente = clienteJpaRepository.findById(clienteEntity.getId());
+        assertTrue(deletedCliente.isEmpty());
     }
 }

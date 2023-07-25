@@ -68,10 +68,12 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     @Transactional
     public Cliente updateCliente(Long id, Cliente cliente) {
-        ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
-        if (clienteEntity.getId() == null) {
+        Optional<ClienteEntity> clienteOptional = clienteJpaRepository.findById(id);
+        if (clienteOptional.isEmpty()) {
             throw new EntityNotFoundException("Cliente no encontrado con el ID: " + id);
         }
+
+        ClienteEntity clienteEntity = clienteOptional.get();
 
         if (cliente.getNombre() != null) {
             clienteEntity.setNombre(cliente.getNombre());
@@ -95,6 +97,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
 
+
     @Override
     public UpdateClienteRequestDTO updateClienteDTO(Long id, Cliente cliente) {
         ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
@@ -114,11 +117,12 @@ public class ClienteServiceImpl implements ClienteService {
     //por regla de sql.
     @Override
     public void deleteCliente(Long id) {
-        ClienteEntity cliente = clienteJpaRepository.getReferenceById(id);
-        if (Objects.isNull(cliente.getNombre())){
-            throw new RuntimeException("Cliente no encontrado");
+        Optional<ClienteEntity> cliente = clienteJpaRepository.findById(id);
+        if (cliente.isEmpty()){
+            throw new EntityNotFoundException("Cliente no encontrado");
         }
-        clienteJpaRepository.delete(cliente);
+
+        clienteJpaRepository.deleteById(cliente.get().getId());
     }
 
 

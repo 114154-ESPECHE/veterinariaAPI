@@ -28,6 +28,10 @@ VALUES ('Ana', 'Martínez', 'Calle D, Ciudad', 789123456, 'ana@example.com', 789
 INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
 VALUES ('Luis', 'Rodríguez', 'Calle E, Ciudad', 654321987, 'luis@example.com', 654321987, '2000-05-05', '2023-07-06');
 
+INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
+VALUES ('Sin mascota', 'Solo', 'Calle E, Ciudad', 654321987, 'luis@example.com', 1111111, '2000-05-05', '2023-07-06');
+
+
 INSERT INTO mascotas (id_cliente, nombre, color, edad, especie)
 VALUES (3, 'Pichu', 'Negro', 3, 0);
 
