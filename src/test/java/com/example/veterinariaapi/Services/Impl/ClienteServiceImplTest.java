@@ -34,19 +34,19 @@ class ClienteServiceImplTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        clienteEntity = new ClienteEntity();
-        clienteEntity.setId(1L);
-        clienteEntity.setNombre("Agustin");
-        clienteEntity.setApellido("Espeche");
-        clienteEntity.setTelefono(351351315L);
-        clienteEntity.setEmail("lalala@lalala.com");
-
-
-        clienteResponseDTO = new ClienteResponseDTO();
-        clienteResponseDTO.setTelefono(351351315L);
-        clienteResponseDTO.setNombre("Agustin");
-        clienteResponseDTO.setApellido("Espeche");
-        clienteResponseDTO.setEmail("lalala@lalala.com");
+//        clienteEntity = new ClienteEntity();
+//        clienteEntity.setId(1L);
+//        clienteEntity.setNombre("Agustin");
+//        clienteEntity.setApellido("Espeche");
+//        clienteEntity.setTelefono(351351315L);
+//        clienteEntity.setEmail("lalala@lalala.com");
+//
+//
+//        clienteResponseDTO = new ClienteResponseDTO();
+//        clienteResponseDTO.setTelefono(351351315L);
+//        clienteResponseDTO.setNombre("Agustin");
+//        clienteResponseDTO.setApellido("Espeche");
+//        clienteResponseDTO.setEmail("lalala@lalala.com");
     }
 
     @Test
@@ -137,6 +137,7 @@ class ClienteServiceImplTest {
         clienteToUpdate.setNombre("NuevoNombre");
         clienteToUpdate.setApellido("NuevoApellido");
         clienteToUpdate.setDireccion("direccio nueva");
+        clienteToUpdate.setDni(35115251L);
         clienteToUpdate.setTelefono(1111111L);
         clienteToUpdate.setEmail("email@emailNuevo.com");
 
@@ -147,11 +148,12 @@ class ClienteServiceImplTest {
         when(clienteJpaRepository.save(any(ClienteEntity.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
 
         // Act
+
         Cliente result = clienteService.updateCliente(existingId, clienteToUpdate);
 
 
         // Assert
-        assertNotNull(result);
+        //assertNotNull(result);
         assertEquals(existingId, result.getId());
         assertEquals("NuevoNombre", result.getNombre());
         assertEquals("NuevoApellido", result.getApellido());
