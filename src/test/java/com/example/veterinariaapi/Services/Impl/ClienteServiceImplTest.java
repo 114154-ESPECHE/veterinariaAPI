@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.stubbing.Answer;
 import org.modelmapper.ModelMapper;
 
 import java.util.Optional;
@@ -30,6 +31,7 @@ class ClienteServiceImplTest {
     private Cliente cliente;
     private ClienteEntity clienteEntity;
     private ClienteResponseDTO clienteResponseDTO;
+    private NewClienteRequestDTO newClienteRequestDTO;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -41,30 +43,35 @@ class ClienteServiceImplTest {
         clienteEntity.setTelefono(351351315L);
         clienteEntity.setEmail("lalala@lalala.com");
 
+        cliente = new Cliente();
+        cliente.setId(1L);
+        cliente.setNombre("Agustin");
+        cliente.setApellido("Espeche");
+        cliente.setEmail("lalala@lalala.com");
 
         clienteResponseDTO = new ClienteResponseDTO();
         clienteResponseDTO.setTelefono(351351315L);
         clienteResponseDTO.setNombre("Agustin");
         clienteResponseDTO.setApellido("Espeche");
         clienteResponseDTO.setEmail("lalala@lalala.com");
+
+        newClienteRequestDTO = new NewClienteRequestDTO();
+        newClienteRequestDTO.setNombre("Sandra");
+        newClienteRequestDTO.setApellido("Diaz");
+        newClienteRequestDTO.setDireccion("dean funes 123123");
+        newClienteRequestDTO.setTelefono(123456789L);
+        newClienteRequestDTO.setEmail("nuevoEmail@email.com");
     }
 
     @Test
     void getClienteById() {
 
-        Cliente clienteExpected = new Cliente();
-        clienteExpected.setId(1L);
-        clienteExpected.setNombre("Agustin");
-        clienteExpected.setApellido("Espeche");
-        clienteExpected.setEmail("lalala@lalala.com");
-
         when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
-        when(modelMapper.map(clienteEntity, Cliente.class)).thenReturn(clienteExpected);
+        when(modelMapper.map(clienteEntity, Cliente.class)).thenReturn(cliente);
 
-        // Act
+
         Cliente result = clienteService.getClienteById(1L);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1L, result.getId());
         assertEquals("Agustin", result.getNombre());
@@ -77,6 +84,11 @@ class ClienteServiceImplTest {
 
         when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
         when(modelMapper.map(clienteEntity, ClienteResponseDTO.class)).thenReturn(clienteResponseDTO);
+
+        ClienteResponseDTO result = clienteService.getClienteResponseDTOById(1L);
+
+        assertNotNull(result);
+        assertEquals("Agustin", clienteResponseDTO.getNombre());
     }
 
     @Test
@@ -96,28 +108,25 @@ class ClienteServiceImplTest {
 
     @Test
     void saveCliente() {
-        NewClienteRequestDTO newClienteRequestDTO = new NewClienteRequestDTO();
-        newClienteRequestDTO.setNombre("AgustinNuevo");
-        newClienteRequestDTO.setApellido("EspecheNuevo");
-
-        ClienteResponseDTO clienteResponseDTO1 = new ClienteResponseDTO();
-        clienteResponseDTO1.setNombre("AgustinNuevo");
-        clienteResponseDTO1.setApellido("EspecheNuevo");
-
-
-        when(clienteJpaRepository.findClienteEntitiesByNombreAndApellido(newClienteRequestDTO.getNombre(), newClienteRequestDTO.getApellido())).thenReturn(Optional.empty());
-
+        when(clienteJpaRepository.findClienteEntitiesByNombreAndApellido("Sandra", "Diaz")).thenReturn(Optional.empty());
 
         when(modelMapper.map(newClienteRequestDTO, ClienteEntity.class)).thenReturn(clienteEntity);
-        when(clienteJpaRepository.save(clienteEntity)).thenReturn(clienteEntity);
-        when(modelMapper.map(clienteEntity, ClienteResponseDTO.class)).thenReturn(clienteResponseDTO1);
+
+        when(clienteJpaRepository.save(any(ClienteEntity.class))).thenAnswer((Answer<ClienteEntity>) invocation -> {
+            Object[] args = invocation.getArguments();
+            return (ClienteEntity) args[0]; // Devolvemos el mismo objeto que se pasó como argumento
+        });
+
+        when(modelMapper.map(clienteEntity, ClienteResponseDTO.class)).thenReturn(clienteResponseDTO);
 
 
         ClienteResponseDTO result = clienteService.saveCliente(newClienteRequestDTO);
 
+
         assertNotNull(result);
-        assertEquals("AgustinNuevo", result.getNombre());
-        assertEquals("EspecheNuevo", result.getApellido());
+        assertEquals("Agustin", result.getNombre());
+        assertEquals("Espeche", result.getApellido());
+
     }
 
 //    @Test
