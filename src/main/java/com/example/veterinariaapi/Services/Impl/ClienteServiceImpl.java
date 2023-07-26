@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -130,10 +131,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<MascotaDTO> getMascotasByClienteDni(Long dni) {
-        ClienteEntity cliente = clienteJpaRepository.findMascotasByClienteDni(dni)
-                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con DNI: " + dni));
+        List<MascotaEntity> mascotas = clienteJpaRepository.findMascotasByClienteDni(dni);
 
-        List<MascotaDTO> mascotasDTO = cliente.getMascotas().stream()
+        List<MascotaDTO> mascotasDTO = mascotas.stream()
                 .map(mascota -> new MascotaDTO(
                         mascota.getId(),
                         mascota.getNombre(),
