@@ -1,8 +1,10 @@
 package com.example.veterinariaapi.Controllers;
 
 import com.example.veterinariaapi.Dtos.Cliente.ClienteResponseDTO;
+import com.example.veterinariaapi.Dtos.Cliente.MascotaDTO;
 import com.example.veterinariaapi.Dtos.Cliente.NewClienteRequestDTO;
 import com.example.veterinariaapi.Dtos.Cliente.UpdateClienteRequestDTO;
+import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Services.ClienteService;
 import jakarta.validation.Valid;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -65,5 +68,11 @@ public class ClienteController {
     public ResponseEntity<Void> deleteCliente(@PathVariable Long id){
         clienteService.deleteCliente(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{dni}/mascotas")
+    public ResponseEntity<List<MascotaDTO>> getMascotasByClienteDni(@PathVariable Long dni) {
+        List<MascotaDTO> mascotasDTO = clienteService.getMascotasByClienteDni(dni);
+        return new ResponseEntity<>(mascotasDTO, HttpStatus.OK);
     }
 }

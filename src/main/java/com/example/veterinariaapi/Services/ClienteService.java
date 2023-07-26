@@ -1,10 +1,14 @@
 package com.example.veterinariaapi.Services;
 
 import com.example.veterinariaapi.Dtos.Cliente.ClienteResponseDTO;
+import com.example.veterinariaapi.Dtos.Cliente.MascotaDTO;
 import com.example.veterinariaapi.Dtos.Cliente.NewClienteRequestDTO;
 import com.example.veterinariaapi.Dtos.Cliente.UpdateClienteRequestDTO;
+import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Cliente;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface ClienteService {
@@ -23,4 +27,6 @@ public interface ClienteService {
     UpdateClienteRequestDTO updateClienteDTO(Long id, Cliente cliente);
 
     void deleteCliente(Long id);
+
+    List<MascotaDTO> getMascotasByClienteDni(Long dni);
 }

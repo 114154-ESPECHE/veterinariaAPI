@@ -1,9 +1,11 @@
 package com.example.veterinariaapi.Services.Impl;
 
+import com.example.veterinariaapi.Dtos.Cliente.MascotaDTO;
 import com.example.veterinariaapi.Dtos.Cliente.NewClienteRequestDTO;
 import com.example.veterinariaapi.Dtos.Cliente.ClienteResponseDTO;
 import com.example.veterinariaapi.Dtos.Cliente.UpdateClienteRequestDTO;
 import com.example.veterinariaapi.Entities.ClienteEntity;
+import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Cliente;
 import com.example.veterinariaapi.Repositories.jpa.ClienteJpaRepository;
 import com.example.veterinariaapi.Services.ClienteService;
@@ -13,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -123,6 +126,24 @@ public class ClienteServiceImpl implements ClienteService {
         }
 
         clienteJpaRepository.deleteById(cliente.get().getId());
+    }
+
+    @Override
+    public List<MascotaDTO> getMascotasByClienteDni(Long dni) {
+        ClienteEntity cliente = clienteJpaRepository.findMascotasByClienteDni(dni)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con DNI: " + dni));
+
+        List<MascotaDTO> mascotasDTO = cliente.getMascotas().stream()
+                .map(mascota -> new MascotaDTO(
+                        mascota.getId(),
+                        mascota.getNombre(),
+                        mascota.getColor(),
+                        mascota.getEdad(),
+                        mascota.getEspecie()
+                ))
+                .collect(Collectors.toList());
+
+        return mascotasDTO;
     }
 
 
