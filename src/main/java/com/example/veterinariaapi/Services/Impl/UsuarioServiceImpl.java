@@ -28,7 +28,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (usuarioEntity.isEmpty()){
             throw new RuntimeException("Usuario no encontrado");
         }
-        return modelMapper.map(usuarioEntity, UsuarioEntity.class);
+        return modelMapper.map(usuarioEntity.get(), UsuarioEntity.class);
     }
 
     @Override

@@ -52,6 +52,12 @@ class UsuarioServiceImplTest {
 
     @Test
     void getUsuarioByEmail() {
+            when(usuarioJpaRepository.getUsuarioEntitiesByEmail(usuarioEntity.getEmail())).thenReturn(usuarioEntity);
+
+            UsuarioEntity result = usuarioService.getUsuarioByEmail(usuarioEntity.getEmail());
+
+            assertNotNull(result);
+            assertEquals("arroba@arroba.com", result.getEmail());
     }
 
     @Test
