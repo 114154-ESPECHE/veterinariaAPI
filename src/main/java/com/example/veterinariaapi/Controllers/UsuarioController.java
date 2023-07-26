@@ -1,6 +1,7 @@
 package com.example.veterinariaapi.Controllers;
 
 import com.example.veterinariaapi.Dtos.Usuario.NewUsuarioRequestDTO;
+import com.example.veterinariaapi.Dtos.Usuario.UpdateUsuarioRequestDTO;
 import com.example.veterinariaapi.Dtos.Usuario.UsuarioRequestDTO;
 import com.example.veterinariaapi.Entities.UsuarioEntity;
 import com.example.veterinariaapi.Services.UsuarioService;
@@ -51,5 +52,12 @@ public class UsuarioController {
         UsuarioEntity usuario = usuarioService.getUsuarioByDni(dni);
         usuarioService.deleteUsuario(dni);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/update/{dni}")
+    public ResponseEntity<UsuarioRequestDTO> updateUsuario(@PathVariable Long dni, @RequestBody UpdateUsuarioRequestDTO updatedUser){
+        UsuarioEntity usuario = usuarioService.getUsuarioByDni(dni);
+        UsuarioRequestDTO userUpdate =  usuarioService.updateUsuario(dni, updatedUser);
+        return ResponseEntity.ok(userUpdate);
     }
 }

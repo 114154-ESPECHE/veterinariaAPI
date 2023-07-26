@@ -14,5 +14,5 @@ public interface UsuarioService {
     UsuarioEntity getUsuarioByEmail(String email);
     UsuarioRequestDTO createUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO);
     void deleteUsuario(Long dni);
-    UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity);
+    UsuarioRequestDTO updateUsuario(Long dni, UpdateUsuarioRequestDTO updateUser);
 }

@@ -78,19 +78,20 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UpdateUsuarioRequestDTO updateUsuario(Long dni, UsuarioEntity usuarioEntity) {
+    public UsuarioRequestDTO updateUsuario(Long dni, UpdateUsuarioRequestDTO newData) {
         Optional <UsuarioEntity> usuarioOptional = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
-        if (usuarioOptional.isPresent()){
-            throw new RuntimeException("The User exist");
+        if (usuarioOptional.isEmpty()){
+            throw new RuntimeException("User not exist");
         }
         UsuarioEntity usuario = usuarioOptional.get();
-        usuario.setPassword(usuarioEntity.getPassword());
-        usuario.setFechaNacimiento(usuarioEntity.getFechaNacimiento());
-        usuario.setTelefono(usuarioEntity.getTelefono());
-        usuario.setDireccion(usuarioEntity.getDireccion());
-        usuario.setEmail(usuarioEntity.getEmail());
+        usuario.setPassword(newData.getPassword());
+        usuario.setFechaNacimiento(newData.getFechaNacimiento());
+        usuario.setTelefono(newData.getTelefono());
+        usuario.setDireccion(newData.getDireccion());
+        usuario.setEmail(newData.getEmail());
+        usuarioJpaRepository.save(usuario);
 
-        return modelMapper.map(usuario, UpdateUsuarioRequestDTO.class);
+        return modelMapper.map(usuario, UsuarioRequestDTO.class);
     }
 
 

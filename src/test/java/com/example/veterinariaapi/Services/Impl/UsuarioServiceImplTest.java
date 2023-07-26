@@ -103,8 +103,15 @@ class UsuarioServiceImplTest {
 
     @Test
     void deleteUsuario() {
-            when(usuarioJpaRepository.getUsuarioEntitiesByDni(3L)).thenReturn(Optional.empty());
+            when(usuarioJpaRepository.getUsuarioEntitiesByDni(usuarioEntity.getDni())).thenReturn(Optional.of(usuarioEntity));
 
+            usuarioService.deleteUsuario(usuarioEntity.getDni());
+
+        verify(usuarioJpaRepository, times(1)).deleteById(35576827L);
+
+        Optional<UsuarioEntity> result = usuarioJpaRepository.getUsuarioEntitiesByDni(35576827L);
+
+        //assertNotNull(result.get());
     }
 
     @Test
