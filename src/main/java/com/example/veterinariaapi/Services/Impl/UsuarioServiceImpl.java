@@ -54,8 +54,16 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioCreated.setDireccion(newUsuarioRequestDTO.getDireccion());
         usuarioCreated.setEmail(newUsuarioRequestDTO.getEmail());
         usuarioCreated.setFechaAlta(fechaAlta);
+
         usuarioJpaRepository.save(usuarioCreated);
-        return modelMapper.map(usuarioCreated, UsuarioRequestDTO.class);
+
+        UsuarioRequestDTO usuarioRequestDTO = new UsuarioRequestDTO();
+        usuarioRequestDTO.setDni(usuarioCreated.getDni());
+        usuarioRequestDTO.setFechaNacimiento(usuarioCreated.getFechaNacimiento());
+        usuarioRequestDTO.setTelefono(usuarioCreated.getTelefono());
+        usuarioRequestDTO.setDireccion(usuarioCreated.getDireccion());
+        usuarioRequestDTO.setEmail(usuarioCreated.getEmail());
+        return usuarioRequestDTO;
     }
 
 
