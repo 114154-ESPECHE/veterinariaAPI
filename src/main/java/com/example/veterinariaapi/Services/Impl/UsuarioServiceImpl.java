@@ -64,14 +64,15 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioRequestDTO.setDireccion(usuarioCreated.getDireccion());
         usuarioRequestDTO.setEmail(usuarioCreated.getEmail());
         return usuarioRequestDTO;
+        //el mapeo no esta con modelMapper porque sino no no pasaba el test
     }
 
 
     @Override
     public void deleteUsuario(Long dni) {
         Optional <UsuarioEntity> usuario = usuarioJpaRepository.getUsuarioEntitiesByDni(dni);
-        if (usuario.isPresent()){
-            throw new RuntimeException("The User exist");
+        if (usuario.isEmpty()){
+            throw new RuntimeException("The User not exist in db");
         }
         usuarioJpaRepository.delete(usuario.get());
     }

@@ -103,6 +103,8 @@ class UsuarioServiceImplTest {
 
     @Test
     void deleteUsuario() {
+            when(usuarioJpaRepository.getUsuarioEntitiesByDni(3L)).thenReturn(Optional.empty());
+
     }
 
     @Test
