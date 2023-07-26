@@ -36,7 +36,7 @@ public class MascotaController {
         return ResponseEntity.ok(mascotaResponseDTOs);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<NewMascotaRequestDTO> saveMascota(@Valid @RequestBody NewMascotaRequestDTO newMascotaRequestDTO){
         NewMascotaRequestDTO mascotaSaved = mascotaService.saveMascota(newMascotaRequestDTO);
          if (mascotaSaved == null){
@@ -44,13 +44,13 @@ public class MascotaController {
          }
          return ResponseEntity.ok(mascotaSaved);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<UpdateMascotaRequestDTO> updateMascota(@PathVariable Long id, @RequestBody UpdateMascotaRequestDTO updateMascotaRequestDTO){
         UpdateMascotaRequestDTO mascotaUpdate = mascotaService.updateMascota(id, updateMascotaRequestDTO);
         return ResponseEntity.ok(mascotaUpdate);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteMascota(@PathVariable Long id){
         mascotaService.deleteMascota(id);
         return ResponseEntity.noContent().build();

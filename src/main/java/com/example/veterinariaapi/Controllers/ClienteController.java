@@ -21,13 +21,13 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cliente/nombreAndtelefono")
+    @GetMapping("/nombreAndtelefono")
     public ResponseEntity<ClienteResponseDTO> getClienteByNombreAndTelefono(@RequestParam String nombre,@RequestParam Long telefono){
         ClienteResponseDTO clienteResponseDTO = clienteService.getClienteByNombreAndTelefono(nombre, telefono);
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Cliente> getClienteById(@PathVariable Long id){
         Cliente cliente = clienteService.getClienteById(id);
         return ResponseEntity.ok(cliente);
@@ -39,7 +39,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
-    @PostMapping("")
+    @PostMapping("/save")
     public ResponseEntity<ClienteResponseDTO> saveCliente(@RequestBody @Valid NewClienteRequestDTO newClienteRequestDTO){
         ClienteResponseDTO clienteSaved = clienteService.saveCliente(newClienteRequestDTO);
         if (Objects.isNull(clienteSaved)){
@@ -49,19 +49,19 @@ public class ClienteController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateModel/{id}")
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long id,@RequestBody Cliente cliente){
         Cliente clieteActualizado = clienteService.updateCliente(id, cliente);
         return ResponseEntity.ok(clieteActualizado);
     }
 
-    @PutMapping("clienteResponseDTO/{id}")
+    @PutMapping("updateEntity/clienteResponseDTO/{id}")
     public ResponseEntity<UpdateClienteRequestDTO> updateClienteResponseDTOResponseEntity(@PathVariable Long id, @RequestBody Cliente cliente){
         UpdateClienteRequestDTO clienteActualizado = clienteService.updateClienteDTO(id, cliente);
         return ResponseEntity.ok(clienteActualizado);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCliente(@PathVariable Long id){
         clienteService.deleteCliente(id);
         return ResponseEntity.noContent().build();
