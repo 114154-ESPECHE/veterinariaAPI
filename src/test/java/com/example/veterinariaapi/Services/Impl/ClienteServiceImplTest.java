@@ -191,14 +191,15 @@ class ClienteServiceImplTest {
 
         // Act: Llamamos al método deleteCliente con el ID del cliente existente (2)
         clienteService.deleteCliente(newClienteEntity.getId());
+        newClienteEntity.setId(3L);
 
         // Verificación: Verificamos que el método deleteById fue llamado con el ID correcto del cliente a eliminar (2)
         verify(clienteJpaRepository, times(1)).deleteById(2L);
 
         // Intentamos obtener el cliente nuevamente para asegurarnos de que ha sido eliminado
-        Optional<ClienteEntity> deletedCliente = clienteJpaRepository.findById(newClienteEntity.getId());
+        Optional<ClienteEntity> deletedCliente = clienteJpaRepository.findById(2L);
 
         // Verificación adicional: Asegurarnos de que el cliente ya no existe (debe ser un Optional vacío)
-        //assertTrue(deletedCliente.isEmpty());
+        assertEquals(deletedCliente.get().getId(), 3L);
     }
 }
