@@ -30,12 +30,12 @@ Alcances
 - Agregar Mascota a cliente
 - Buscar Cliente por dni, devolver la lista de mascotas.
 - Buscar cliente por nombre y telefono, o email y devolver la lista de mascotas
-- Buscar mascota por nombre o por dueño
-- Buscar cliente y que arroje el dato de cuantas mascotas tiene
+- Buscar mascota por nombre o por dni del dueño.
 - Agregar mascota
-- CRUD Mascota
-- CRUD historia clinica de la Mascota
 
-
+Participantes:
+-
+- 114154-ESPECHE
+- leyvidson
 
 
