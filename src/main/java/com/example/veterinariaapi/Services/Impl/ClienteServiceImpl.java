@@ -122,8 +122,8 @@ public class ClienteServiceImpl implements ClienteService {
     //DeleteCliente funciona, hay que elegir primero un cliente que no tenga mascota
     //por regla de sql.
     @Override
-    public void deleteCliente(Long id) {
-        Optional<ClienteEntity> cliente = clienteJpaRepository.findById(id);
+    public void deleteCliente(Long dni) {
+        Optional<ClienteEntity> cliente = clienteJpaRepository.findClienteEntitiesByDni(dni);
         if (cliente.isEmpty()){
             throw new EntityNotFoundException("Cliente no encontrado");
         }

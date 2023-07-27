@@ -27,7 +27,7 @@ public interface ClienteService {
 
     UpdateClienteRequestDTO updateClienteDTO(Long id, UpdateClienteRequestDTO updateClienteRequestDTO);
 
-    void deleteCliente(Long id);
+    void deleteCliente(Long dni);
 
     List<MascotaDTO> getMascotasByClienteDni(Long dni);
 }

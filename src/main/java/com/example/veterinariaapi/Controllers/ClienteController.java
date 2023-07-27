@@ -64,9 +64,9 @@ public class ClienteController {
         return ResponseEntity.ok(clienteActualizado);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteCliente(@PathVariable Long id){
-        clienteService.deleteCliente(id);
+    @DeleteMapping("/delete/{dni}")
+    public ResponseEntity<Void> deleteCliente(@PathVariable Long dni){
+        clienteService.deleteCliente(dni);
         return ResponseEntity.noContent().build();
     }
 
