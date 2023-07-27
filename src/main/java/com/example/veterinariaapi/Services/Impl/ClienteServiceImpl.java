@@ -29,8 +29,8 @@ public class ClienteServiceImpl implements ClienteService {
     private ModelMapper modelMapper;
 
     @Override
-    public Cliente getClienteById(Long id) {
-        ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
+    public Cliente getClienteByDni(Long dni) {
+        Optional<ClienteEntity> clienteEntity = clienteJpaRepository.findClienteEntitiesByDni(dni);
         if (Objects.isNull(clienteEntity)){
             throw new EntityNotFoundException();
         }
@@ -38,8 +38,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteResponseDTO getClienteResponseDTOById(Long id) {
-        ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
+    public ClienteResponseDTO getClienteResponseDTOBDni(Long dni) {
+        Optional<ClienteEntity> clienteEntity = clienteJpaRepository.findClienteEntitiesByDni(dni);
         if (Objects.isNull(clienteEntity)){
             throw new EntityNotFoundException();
         }
@@ -71,10 +71,10 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional
-    public Cliente updateCliente(Long id, Cliente cliente) {
-        Optional<ClienteEntity> clienteOptional = clienteJpaRepository.findById(id);
+    public Cliente updateCliente(Long dni, Cliente cliente) {
+        Optional<ClienteEntity> clienteOptional = clienteJpaRepository.findClienteEntitiesByDni(dni);
         if (clienteOptional.isEmpty()) {
-            throw new EntityNotFoundException("Cliente no encontrado con el ID: " + id);
+            throw new EntityNotFoundException("Cliente no encontrado con el ID: " + dni);
         }
 
         ClienteEntity clienteEntity = clienteOptional.get();
@@ -103,19 +103,21 @@ public class ClienteServiceImpl implements ClienteService {
 
 
     @Override
-    public UpdateClienteRequestDTO updateClienteDTO(Long id, Cliente cliente) {
-        ClienteEntity clienteEntity = clienteJpaRepository.getReferenceById(id);
-        if (Objects.isNull(clienteEntity)){
-            throw new RuntimeException("Cliente no encontrado");
-        }
-        clienteEntity.setNombre(cliente.getNombre());
-        clienteEntity.setApellido(cliente.getApellido());
-        clienteEntity.setDireccion(cliente.getDireccion());
-        clienteEntity.setTelefono(cliente.getTelefono());
-        clienteEntity.setEmail(cliente.getEmail());
+    public UpdateClienteRequestDTO updateClienteDTO(Long dni, UpdateClienteRequestDTO updateClienteRequestDTO) {
+        Optional<ClienteEntity> optionalClienteEntity = clienteJpaRepository.findClienteEntitiesByDni(dni);
+        ClienteEntity clienteEntity = optionalClienteEntity.orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+
+        clienteEntity.setNombre(updateClienteRequestDTO.getNombre());
+        clienteEntity.setApellido(updateClienteRequestDTO.getApellido());
+        clienteEntity.setDireccion(updateClienteRequestDTO.getDireccion());
+        clienteEntity.setTelefono(updateClienteRequestDTO.getTelefono());
+        clienteEntity.setEmail(updateClienteRequestDTO.getEmail());
+
         clienteJpaRepository.save(clienteEntity);
+
         return modelMapper.map(clienteEntity, UpdateClienteRequestDTO.class);
     }
+
 
     //DeleteCliente funciona, hay que elegir primero un cliente que no tenga mascota
     //por regla de sql.

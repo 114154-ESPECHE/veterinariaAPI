@@ -17,7 +17,7 @@ INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_n
 VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com', 123456789, '2000-01-01', '2023-07-06');
 
 INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
-VALUES ('María', 'López', 'Calle B, Ciudad', 987654321, 'maria@example.com', 987654321, '2000-02-02', '2023-07-06');
+VALUES ('Carla', 'Olocco', 'Calle B, Ciudad', 987654321, 'maria@example.com', 31736067, '1986-07-11', '2023-07-06');
 
 INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
 VALUES ('Pedro', 'González', 'Calle C, Ciudad', 456789123, 'pedro@example.com', 456789123, '2000-03-03', '2023-07-06');

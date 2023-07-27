@@ -30,15 +30,15 @@ public class ClienteController {
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Cliente> getClienteById(@PathVariable Long id){
-        Cliente cliente = clienteService.getClienteById(id);
+    @GetMapping("/{dni}")
+    public ResponseEntity<Cliente> getClienteByDni(@PathVariable Long dni){
+        Cliente cliente = clienteService.getClienteByDni(dni);
         return ResponseEntity.ok(cliente);
     }
 
-    @GetMapping("/cliente-response/{id}")
-    public ResponseEntity<ClienteResponseDTO> getClienteResponseDTOById(@PathVariable Long id){
-        ClienteResponseDTO clienteResponseDTO = clienteService.getClienteResponseDTOById(id);
+    @GetMapping("/cliente-response/{dni}")
+    public ResponseEntity<ClienteResponseDTO> getClienteResponseDTOById(@PathVariable Long dni){
+        ClienteResponseDTO clienteResponseDTO = clienteService.getClienteResponseDTOBDni(dni);
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
@@ -52,15 +52,15 @@ public class ClienteController {
         }
     }
 
-    @PutMapping("/updateModel/{id}")
-    public ResponseEntity<Cliente> updateCliente(@PathVariable Long id,@RequestBody Cliente cliente){
-        Cliente clieteActualizado = clienteService.updateCliente(id, cliente);
+    @PutMapping("/updateModel/{dni}")//realizado para practicar nomas.No usar porque expongo los datos del model
+    public ResponseEntity<Cliente> updateCliente(@PathVariable Long dni,@RequestBody Cliente cliente){
+        Cliente clieteActualizado = clienteService.updateCliente(dni, cliente);
         return ResponseEntity.ok(clieteActualizado);
     }
 
-    @PutMapping("updateEntity/clienteResponseDTO/{id}")
-    public ResponseEntity<UpdateClienteRequestDTO> updateClienteResponseDTOResponseEntity(@PathVariable Long id, @RequestBody Cliente cliente){
-        UpdateClienteRequestDTO clienteActualizado = clienteService.updateClienteDTO(id, cliente);
+    @PutMapping("updateEntity/clienteResponseDTO/{dni}")
+    public ResponseEntity<UpdateClienteRequestDTO> updateClienteResponseDTOResponseEntity(@PathVariable Long dni, @RequestBody UpdateClienteRequestDTO updateClienteRequestDTO){
+        UpdateClienteRequestDTO clienteActualizado = clienteService.updateClienteDTO(dni, updateClienteRequestDTO);
         return ResponseEntity.ok(clienteActualizado);
     }
 

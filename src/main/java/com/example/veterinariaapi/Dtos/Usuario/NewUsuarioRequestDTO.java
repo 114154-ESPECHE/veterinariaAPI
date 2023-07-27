@@ -14,13 +14,10 @@ import java.time.LocalDate;
 public class NewUsuarioRequestDTO {
 
     private Long dni;
-
+    private String password;
     private LocalDate fechaNacimiento;
-
     private Long telefono;
-
     private String direccion;
-
     private String email;
 
 }

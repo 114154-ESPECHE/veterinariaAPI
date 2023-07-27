@@ -17,8 +17,8 @@ https://github.com/114154-ESPECHE/veterinariaAPI
 CRUD:
 -
 
-- Usuario
-- Cliente
+- Usuario (Veterinario) 
+- Cliente (CF) 1 --> n Mascota
 - Mascota
 - Historia Medica
 

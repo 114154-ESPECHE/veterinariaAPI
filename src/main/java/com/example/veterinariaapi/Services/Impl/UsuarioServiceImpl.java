@@ -49,6 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         LocalDate fechaAlta = LocalDate.now();
         UsuarioEntity usuarioCreated = new UsuarioEntity();
         usuarioCreated.setDni(newUsuarioRequestDTO.getDni());
+        usuarioCreated.setPassword(newUsuarioRequestDTO.getPassword());
         usuarioCreated.setFechaNacimiento(newUsuarioRequestDTO.getFechaNacimiento());
         usuarioCreated.setTelefono(newUsuarioRequestDTO.getTelefono());
         usuarioCreated.setDireccion(newUsuarioRequestDTO.getDireccion());

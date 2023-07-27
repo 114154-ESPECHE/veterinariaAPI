@@ -13,18 +13,19 @@ import java.util.List;
 @Service
 public interface ClienteService {
 
-    Cliente getClienteById(Long id);
+    //Cliente getClienteById(Long id);
+    Cliente getClienteByDni(Long dni);
 
-    ClienteResponseDTO getClienteResponseDTOById(Long id);//para el negocio no esta bien este metodo
+    ClienteResponseDTO getClienteResponseDTOBDni(Long dni);//para el negocio no esta bien este metodo
     //ya que un cliente no sabria su id
 
     ClienteResponseDTO getClienteByNombreAndTelefono(String nobre, Long telefono);
 
     ClienteResponseDTO saveCliente(NewClienteRequestDTO newClienteRequestDTO);
 
-    Cliente updateCliente(Long id, Cliente cliente);
+    Cliente updateCliente(Long dni, Cliente cliente);
 
-    UpdateClienteRequestDTO updateClienteDTO(Long id, Cliente cliente);
+    UpdateClienteRequestDTO updateClienteDTO(Long id, UpdateClienteRequestDTO updateClienteRequestDTO);
 
     void deleteCliente(Long id);
 

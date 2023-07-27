@@ -63,33 +63,33 @@ class ClienteServiceImplTest {
         newClienteRequestDTO.setEmail("nuevoEmail@email.com");
     }
 
-    @Test
-    void getClienteById() {
+    //@Test
+//    void getClienteById() {
+//
+//        when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
+//        when(modelMapper.map(clienteEntity, Cliente.class)).thenReturn(cliente);
+//
+//
+//        Cliente result = clienteService.getClienteById(1L);
+//
+//        assertNotNull(result);
+//        assertEquals(1L, result.getId());
+//        assertEquals("Agustin", result.getNombre());
+//        assertEquals("Espeche", result.getApellido());
+//        assertEquals("lalala@lalala.com", result.getEmail());
+//    }
 
-        when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
-        when(modelMapper.map(clienteEntity, Cliente.class)).thenReturn(cliente);
-
-
-        Cliente result = clienteService.getClienteById(1L);
-
-        assertNotNull(result);
-        assertEquals(1L, result.getId());
-        assertEquals("Agustin", result.getNombre());
-        assertEquals("Espeche", result.getApellido());
-        assertEquals("lalala@lalala.com", result.getEmail());
-    }
-
-    @Test
-    void getClienteResponseDTOById() {
-
-        when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
-        when(modelMapper.map(clienteEntity, ClienteResponseDTO.class)).thenReturn(clienteResponseDTO);
-
-        ClienteResponseDTO result = clienteService.getClienteResponseDTOById(1L);
-
-        assertNotNull(result);
-        assertEquals("Agustin", clienteResponseDTO.getNombre());
-    }
+//    @Test
+//    void getClienteResponseDTOById() {
+//
+//        when(clienteJpaRepository.getReferenceById(1L)).thenReturn(clienteEntity);
+//        when(modelMapper.map(clienteEntity, ClienteResponseDTO.class)).thenReturn(clienteResponseDTO);
+//
+//        ClienteResponseDTO result = clienteService.getClienteResponseDTOById(1L);
+//
+//        assertNotNull(result);
+//        assertEquals("Agustin", clienteResponseDTO.getNombre());
+//    }
 
     @Test
     void getClienteByNombreAndTelefono() {
