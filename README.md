@@ -1,6 +1,6 @@
 # veterinariaAPI
 Backend_:
-JAVA-SpringBoot, SQL(h2)
+JAVA-SpringBoot MVC + Capa de Servicios, SQL(h2)
 
 Objetivo:
 -
@@ -30,11 +30,9 @@ Alcances
 - Agregar Mascota a cliente
 - Buscar Cliente por dni, devolver la lista de mascotas.
 - Buscar cliente por nombre y telefono, o email y devolver la lista de mascotas
-- Buscar mascota por nombre o por dueño
-- Buscar cliente y que arroje el dato de cuantas mascotas tiene
-- Agregar mascota
-- CRUD Mascota
-- CRUD historia clinica de la Mascota
+- Buscar mascota por nombre o por dni de titular
+
+
 
 
 
