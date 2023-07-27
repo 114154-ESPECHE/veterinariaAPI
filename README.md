@@ -1,6 +1,6 @@
 # veterinariaAPI
 Backend_:
-JAVA-SpringBoot, SQL(h2)
+JAVA-SpringBoot MVC + Capa Service, SQL(h2)
 
 Objetivo:
 -
