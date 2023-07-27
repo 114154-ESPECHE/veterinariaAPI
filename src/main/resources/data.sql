@@ -1,18 +1,3 @@
--- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
--- VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com');
---
--- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
--- VALUES ('María', 'López', 'Calle B, Ciudad', 987654321, 'maria@example.com');
---
--- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
--- VALUES ('Pedro', 'González', 'Calle C, Ciudad', 456789123, 'pedro@example.com');
---
--- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
--- VALUES ('Ana', 'Martínez', 'Calle D, Ciudad', 789123456, 'ana@example.com');
---
--- INSERT INTO clientes (nombre, apellido, direccion, telefono, email)
--- VALUES ('Luis', 'Rodríguez', 'Calle E, Ciudad', 654321987, 'luis@example.com');
-
 INSERT INTO clientes (nombre, apellido, direccion, telefono, email, dni, fecha_nacimiento, fecha_alta)
 VALUES ('Juan', 'Perez', 'Calle A, Ciudad', 123456789, 'juan@example.com', 123456789, '2000-01-01', '2023-07-06');
 

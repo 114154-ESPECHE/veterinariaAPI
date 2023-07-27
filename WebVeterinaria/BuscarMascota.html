@@ -1,112 +1,75 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Buscar Mascota</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Principal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Buscar Cliente<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Buscar Mascota</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Nuevo Cliente</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Nueva Mascota</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Buscar Mascota</title>
+</head>
+<body>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Principal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Buscar Cliente<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Buscar Mascota</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nuevo Cliente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nueva Mascota</a>
+        </li>
+      </ul>
     </div>
-    <br>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-6" id="buscarMascotaForm">
-          <h3>Buscar Mascota</h3>
-          <br>
-          <div class="form">
-            <form>
-              <div class="row">
-                <div class="col-lg-8">
-                  <label for="nombreMascota">Ingrese el nombre de la mascota:</label>
-                  <input type="text" class="form-control" placeholder="nombreMascota" name="nombreMascota" id="nombreMascotaInput">
-                </div>
-                
-              </div>
-              <div class="col-lg-4">
-                <br>
-                <button type="submit" class="btn btn-primary" name="nombreMascota" id="">Buscar</button>
-              </div>
-            </form>
+  </nav>
+</div>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6" id="buscarMascotaForm">
+      <h3>Buscar Mascota</h3>
+      <br>
+      <div class="form">
+        <form>
+          <div class="row">
+            <div class="col-lg-8">
+              <label for="nombreMascota">Ingrese el nombre de la mascota:</label>
+              <input type="text" class="form-control" placeholder="nombreMascota" name="nombreMascota" id="nombreMascotaInput">
+            </div>
           </div>
-        </div>
-        <div class="col-lg-6" id="resultadosCliente">
-          <h4>Datos de la mascota:</h4>
-          <p><strong>Nombre:</strong> <span id="nombreMascota"></span></p>
-          <label type="text" id="inputNombreMascota">
-          <p><strong>Color:</strong> <span id="colorMascota"></span></p>
-          <input type="text" id="inputColorMascota">
-          <p><strong>Edad:</strong> <span id="edadMascota"></span></p>
-          <input type="text" id="inputEdadMascota">
-          <p><strong>Especie:</strong> <span id="especieMascota"></span></p>
-          <input type="text" id="inputEspecieMascota">
-          <p><strong>Nombre del Dueño:</strong> <span id="nombreCliente"></span></p>
-          <input type="text" id="inputNombreCliente">
-          <p><strong>Apellido del Dueño:</strong> <span id="apellidoCliente"></span></p>
-          <input type="text" id="inputApellidoCliente">
-          <br>
-        </div>
+          <div class="col-lg-4">
+            <br>
+            <button type="submit" class="btn btn-primary" id="buscarBtn">Buscar</button>
+          </div>
+        </form>
       </div>
-    </div> 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
-  </body>
-  <script>
-    $(document).ready(function(){
-      $('buscarMascotaForm').submit(function(event){
-        event.preventDefault();
-
-        var nombre = $('nombreMascotaInput').val();
-
-        $.ajax({
-          url: 'http://localhost:8080/mascotas/mascota-ResponseDTO/' + nombre,
-          type: 'GET',
-          success: function(response){
-            console.log(response);
-
-        $('#inputNombreMascota').val(response.nombre);
-        $('inputNombreMascota').prop('disabled', true);
-        $('#inputColorMascota').prop('disabled', true);
-        $('#inputEdadMascota').val(formatDate(response.fechaNacimiento));
-        $('#inputEspecieMascota').val(response.telefono);
-        $('#inputNombreCliente').val(response.direccion);
-        $('#inputApellidoCliente').val(response.email);
-          },
-          error: function(error) {
-        console.error('Error al obtener la mascota:', error);
-      }
-        });
-      });
-    });
-
-
-  </script>
+    </div>
+    <div class="col-lg-6" id="resultadosCliente">
+      <h4>Datos de la mascota:</h4>
+      <p><strong>Nombre:</strong> <span id="nombreMascota"></span></p>
+      <p><strong>Color:</strong> <span id="colorMascota"></span></p>
+      <p><strong>Edad:</strong> <span id="edadMascota"></span></p>
+      <p><strong>Especie:</strong> <span id="especieMascota"></span></p>
+      <p><strong>Nombre del Dueño:</strong> <span id="nombreCliente"></span></p>
+      <p><strong>Apellido del Dueño:</strong> <span id="apellidoCliente"></span></p>
+      <br>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+</body>
 </html>

@@ -136,5 +136,10 @@ public class MascotaServiceImpl implements MascotaService {
         return mascota.getNombre();
     }
 
+    @Override
+    public MascotaEntity getMascotaByDniCliente(Long dni) {
+        return null;
+    }
+
 
 }
