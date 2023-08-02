@@ -19,6 +19,8 @@ public class Cliente {
     @NotNull
     private Long dni;
     @NotNull
+    private String password;
+    @NotNull
     private LocalDate fechaNacimiento;
     @NotNull
     private Long telefono;

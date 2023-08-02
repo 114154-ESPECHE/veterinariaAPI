@@ -17,6 +17,6 @@ public interface MascotaJpaRepository extends JpaRepository<MascotaEntity, Long>
 
     MascotaEntity getMascotaEntitiesById(Long id);
 
-    MascotaEntity getMascotaEntityByIdCliente
+    //MascotaEntity getMascotaEntityByIdCliente
 
 }

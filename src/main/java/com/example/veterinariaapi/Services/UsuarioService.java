@@ -15,4 +15,6 @@ public interface UsuarioService {
     UsuarioRequestDTO createUsuario(NewUsuarioRequestDTO newUsuarioRequestDTO);
     void deleteUsuario(Long dni);
     UsuarioRequestDTO updateUsuario(Long dni, UpdateUsuarioRequestDTO updateUser);
+
+    UsuarioRequestDTO getUsuarioByDniAndPassword(Long dni, String password);
 }

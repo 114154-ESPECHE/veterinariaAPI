@@ -24,6 +24,8 @@ public class ClienteEntity {
     @Column
     private Long dni;
     @Column
+    private String password;
+    @Column
     private LocalDate fechaNacimiento;
     @Column
     private Long telefono;

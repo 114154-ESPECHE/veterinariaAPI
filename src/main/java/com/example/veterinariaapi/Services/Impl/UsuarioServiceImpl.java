@@ -7,6 +7,7 @@ import com.example.veterinariaapi.Entities.UsuarioEntity;
 import com.example.veterinariaapi.Models.Usuario;
 import com.example.veterinariaapi.Repositories.jpa.UsuarioJpaRepository;
 import com.example.veterinariaapi.Services.UsuarioService;
+import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,6 +94,15 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioJpaRepository.save(usuario);
 
         return modelMapper.map(usuario, UsuarioRequestDTO.class);
+    }
+
+    @Override
+    public UsuarioRequestDTO getUsuarioByDniAndPassword(Long dni, String password) {
+        Optional<UsuarioEntity> usuario = usuarioJpaRepository.findUsuarioEntitiesByDniAndPassword(dni, password);
+        if (usuario.isPresent()){
+            return modelMapper.map(usuario, UsuarioRequestDTO.class);
+        }
+        throw new EntityNotFoundException("Dni or password invalid!");
     }
 
 
