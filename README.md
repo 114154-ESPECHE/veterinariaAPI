@@ -1,6 +1,8 @@
 # veterinariaAPI
 Backend_:
+
 JAVA-SpringBoot MVC + Capa de Servicios, SQL(h2)
+
 
 Objetivo:
 -
@@ -30,10 +32,13 @@ Alcances
 - Agregar Mascota a cliente
 - Buscar Cliente por dni, devolver la lista de mascotas.
 - Buscar cliente por nombre y telefono, o email y devolver la lista de mascotas
-- Buscar mascota por nombre o por dni de titular
+- Buscar mascota por nombre o por dni del dueño.
+- Agregar mascota
 
-
-
+Participantes:
+-
+- 114154-ESPECHE
+- leyvidson
 
 
 
