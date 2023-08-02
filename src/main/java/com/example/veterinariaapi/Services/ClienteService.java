@@ -30,4 +30,6 @@ public interface ClienteService {
     void deleteCliente(Long dni);
 
     List<MascotaDTO> getMascotasByClienteDni(Long dni);
+
+    ClienteResponseDTO getClienteEntityByDniAndPassword(Long dni, String password);
 }

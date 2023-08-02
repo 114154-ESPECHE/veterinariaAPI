@@ -21,10 +21,22 @@ public class LoginController {
     @PostMapping("/usuario")
     public ResponseEntity<?> loginUsuario(@RequestBody @Valid LoginBody loginBody){
         try{
-            loginService.login(loginBody.getDni(), loginBody.getPassword());
+            loginService.loginUsuario(loginBody.getDni(), loginBody.getPassword());
             return ResponseEntity.ok("Welcome " + loginBody.getDni());
         } catch (Exception e){
             return ResponseEntity.badRequest().body("User or Password invalid");
         }
     }
+
+    @PostMapping("/cliente")
+    public ResponseEntity<?> loginCliente(@RequestBody @Valid LoginBody loginBody){
+        try{
+            loginService.loginCliente(loginBody.getDni(), loginBody.getPassword());
+            return ResponseEntity.ok("Welcome " + loginBody.getDni());
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body("User or Password invalid");
+        }
+    }
+
+
 }

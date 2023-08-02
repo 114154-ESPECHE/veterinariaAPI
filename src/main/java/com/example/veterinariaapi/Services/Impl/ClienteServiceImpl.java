@@ -148,5 +148,14 @@ public class ClienteServiceImpl implements ClienteService {
         return mascotasDTO;
     }
 
+    @Override
+    public ClienteResponseDTO getClienteEntityByDniAndPassword(Long dni, String password) {
+        Optional<ClienteEntity> clienteEntity = clienteJpaRepository.findClienteEntitiesByDniAndPassword(dni, password);
+        if (Objects.isNull(clienteEntity)){
+            throw new EntityNotFoundException("Cliente no encontrado");
+        }
+        return modelMapper.map(clienteEntity, ClienteResponseDTO.class);
+    }
+
 
 }

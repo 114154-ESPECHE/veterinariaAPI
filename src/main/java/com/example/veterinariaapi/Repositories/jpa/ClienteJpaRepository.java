@@ -24,5 +24,5 @@ public interface ClienteJpaRepository extends JpaRepository<ClienteEntity, Long>
     @Query("SELECT mascota FROM MascotaEntity mascota WHERE mascota.idCliente.dni = :dni")
     List<MascotaEntity> findMascotasByClienteDni(@Param("dni") Long dni);
 
-
+    Optional<ClienteEntity> findClienteEntitiesByDniAndPassword(Long dni, String password);
 }
