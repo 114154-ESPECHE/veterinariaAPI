@@ -1,6 +1,7 @@
 package com.example.veterinariaapi.Entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +18,12 @@ public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank
     @Column
     private Long dni;
+    @NotNull
+    @NotBlank
     @Column
     private String password;
     @Column
@@ -27,6 +32,8 @@ public class UsuarioEntity {
     private Long telefono;
     @Column
     private String direccion;
+    @NotNull
+    @NotBlank
     @Column
     private String email;
     @Column
