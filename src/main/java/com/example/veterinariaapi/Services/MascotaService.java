@@ -31,4 +31,5 @@ public interface MascotaService {
     String getNombreMascotaById(Long idMascota);
 
     MascotaEntity getMascotaByDniCliente(Long dni);
+    MascotaResponseDTO buscarMascotaPorNombreYDniCliente(String nombreMascota, Long dniCliente);
 }

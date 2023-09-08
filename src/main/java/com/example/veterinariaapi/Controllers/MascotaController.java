@@ -62,5 +62,13 @@ public class MascotaController {
 
         return  ResponseEntity.ok(historiaClinicaResponseDTOList);
     }
+    @GetMapping("/getMascotaByNombreAndDniCliente/{nombreMascota}/{dniCliente}")
+    public ResponseEntity<MascotaResponseDTO> getMascotaByNombreAndDniCliente(@PathVariable String nombreMascota, @PathVariable Long dniCliente) {
+        MascotaResponseDTO mascota = mascotaService.buscarMascotaPorNombreYDniCliente(nombreMascota, dniCliente);
+        if (mascota == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(mascota);
+    }
 
 }

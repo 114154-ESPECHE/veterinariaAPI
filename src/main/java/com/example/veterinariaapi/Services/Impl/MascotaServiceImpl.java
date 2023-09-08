@@ -140,6 +140,14 @@ public class MascotaServiceImpl implements MascotaService {
     public MascotaEntity getMascotaByDniCliente(Long dni) {
         return null;
     }
+    @Override
+    public MascotaResponseDTO buscarMascotaPorNombreYDniCliente(String nombreMascota, Long dniCliente) {
+        MascotaEntity mascota = mascotaJpaRepository.buscarPorNombreYDniCliente(nombreMascota,dniCliente);
+        if (Objects.isNull(mascota)){
+            throw new RuntimeException("Mascota no encontrada para el dni " + dniCliente + "del cliente");
+        }
+        return modelMapper.map(mascota, MascotaResponseDTO.class);
+    }
 
 
 }
