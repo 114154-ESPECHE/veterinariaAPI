@@ -4,6 +4,7 @@ import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDT
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
+import com.example.veterinariaapi.Entities.ClienteEntity;
 import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Mascota;
 import com.example.veterinariaapi.Services.MascotaService;
@@ -62,5 +63,22 @@ public class MascotaController {
 
         return  ResponseEntity.ok(historiaClinicaResponseDTOList);
     }
+
+    //probando para ver si un mascota service me puede devolver un clienteEntity
+    @GetMapping("/cliente-by-idCliente/{idCliente}")
+    public ResponseEntity<ClienteEntity> getClienteByIdCliente(@PathVariable Long idCliente){
+        ClienteEntity cliente = mascotaService.getClienteByIdCliente(idCliente);
+        return ResponseEntity.ok(cliente);
+    }
+
+    @GetMapping("/getMascotaByNombreAndDniCliente/{nombreMascota}/{dniCliente}")
+    public ResponseEntity<MascotaResponseDTO> getMascotaByNombreAndDniCliente(@PathVariable String nombreMascota, @PathVariable Long dniCliente) {
+        MascotaResponseDTO mascota = mascotaService.buscarMascotaPorNombreYDniCliente(nombreMascota, dniCliente);
+        if (mascota == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(mascota);
+    }
+
 
 }

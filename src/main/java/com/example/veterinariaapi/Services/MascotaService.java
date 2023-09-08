@@ -4,6 +4,7 @@ import com.example.veterinariaapi.Dtos.HistoriaClinica.HistoriaClinicaResponseDT
 import com.example.veterinariaapi.Dtos.Mascota.NewMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.UpdateMascotaRequestDTO;
 import com.example.veterinariaapi.Dtos.Mascota.MascotaResponseDTO;
+import com.example.veterinariaapi.Entities.ClienteEntity;
 import com.example.veterinariaapi.Entities.MascotaEntity;
 import com.example.veterinariaapi.Models.Mascota;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public interface MascotaService {
 
     String getNombreMascotaById(Long idMascota);
 
-    MascotaEntity getMascotaByDniCliente(Long dni);
+    ClienteEntity getClienteByIdCliente(Long idCliente);
+
+    MascotaResponseDTO buscarMascotaPorNombreYDniCliente(String nombreMascota, Long dniCliente);
+
+
 }
