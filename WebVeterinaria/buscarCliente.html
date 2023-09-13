@@ -47,7 +47,7 @@
             <form>
               <div class="row">
                 <div class="col-lg-8">
-                  <label for="dni">Ingrese el DNI del cliente:</label>
+                  <label for="dniInput">Ingrese el DNI del cliente:</label>
                   <input type="text" class="form-control" placeholder="DNI" name="dni" id="dniInput">
                 </div>
                 
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="col-lg-6" id="resultadosCliente">
-          <h4>Datos del Usuario:</h4>
+          <h4>Datos del Cliente:</h4>
           <p><strong>DNI:</strong> <span id="dniCliente"></span></p>
           <input type="text" id="inputDni">
           <p><strong>Fecha de Nacimiento:</strong> <span id="fechaNacimientoCliente"></span></p>
@@ -92,12 +92,12 @@
     var dni = $('#dniInput').val();
 
     $.ajax({
-      url: 'http://localhost:8080/usuarios/getByDni/' + dni,
+      url: 'http://localhost:8080/clientes/' + dni,
       type: 'GET',
       success: function(response) {
-        // Procesa los datos del usuario obtenidos en la respuesta
+        
         console.log(response);
-        // Actualiza los campos de entrada en tu front-end con los datos obtenidos
+        
         $('#inputDni').val(response.dni);
         $('#inputDni').prop('disabled', true);
         $('#inputFechaNacimiento').val(formatDate(response.fechaNacimiento));
