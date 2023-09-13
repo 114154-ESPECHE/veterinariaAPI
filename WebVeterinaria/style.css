@@ -2,7 +2,7 @@
     :root {
       --carousel-caption-color: black;
       --carousel-caption-bg-color: rgba(0, 0, 0, 0);
-      --carousel-control-color: Yellow;
+      --carousel-control-color: black;
       --carousel-control-bg-color: rgba(0, 0, 0, 0);
     }
 
@@ -24,4 +24,20 @@
       color: var(--carousel-control-color);
       background-color: var(--carousel-control-bg-color);
     }
- 
+
+    body {      
+      background-image: linear-gradient(to bottom, #00ffff, #0000ff);
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    h5 {
+      color: black;
+      font-style: italic;
+    }
+    p {
+      color: rgb(46, 43, 43);
+      font-style: oblique;
+    }
