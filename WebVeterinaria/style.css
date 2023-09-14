@@ -63,24 +63,30 @@
     text-align: center;     
 }
 
-#cardUbicaciones {
+#cardVeterinarias {
   background: url('Img/puntero-veterinaria-removebg-preview.png') no-repeat center center;
   background-size: contain;
+  background-color: rgba(150, 52, 241, 0.479);
 }
 #cardCallejeros {
   background: url('Img/emergencia-animal-removebg-preview.png') no-repeat center center;
   background-size: auto; 
+  background-color: rgba(200, 255, 0, 0.582);
+  
 }
 #cardEspecialistas {
   background: url('Img/Especialidades.png') no-repeat center center;
   background-size: contain;
+  background-color: rgba(0, 255, 55, 0.623); 
+  
 }
 #cardDonaciones {
   background: url('Img/ayuda-animal-removebg-preview.png') no-repeat center center;
   background-size: contain;
+  background-color: rgba(255, 0, 0, 0.3); 
 }
-#cardUbicaciones p,
-#cardUbicaciones h5,
+#cardVeterinarias p,
+#cardVeterinarias h5,
 #cardCallejeros p,
 #cardCallejeros h5,
 #cardEspecialistas p,
@@ -90,17 +96,46 @@
     color: black;    
 }
 
+#rowJumbotron {
+  padding-bottom: 0.5px;
+}
+
 #columna1 {
-  background-color: rgba(200, 255, 0, 0.582);
+  background-color: rgb(192, 218, 100);
 }
-#columna2A {
-  background-color: rgba(215, 231, 67, 0.582);
-}
-#columna2B {
-  background-color: rgba(255, 0, 0, 0.3);  
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(to right, #FAD02E, #FF9A9E);
+  }
+  20% {
+    background: linear-gradient(to right, #FF9A9E, #B4F7F8);
+  }
+  40% {
+    background: linear-gradient(to right, #B4F7F8, #FFC0A0);
+  }
+  60% {
+    background: linear-gradient(to right, #FFC0A0, #FAD02E);
+  }
+  50% {
+    background: linear-gradient(to right, #FAD02E, #FFC0A0);
+  }
+  90% {
+    background: linear-gradient(to right, #FAD02E, #FF9A9E);
+  }
+  100% {
+    background: linear-gradient(to right, #FF9A9E, #FAD02E);
+  }
 }
 
-#divGestionMascotas {
-  padding-block-start: 30px;
+body {
+  animation: gradientAnimation 10s infinite; 
+  background-size: 200% 100%; 
+  transition: background 2s ease; 
 }
 
+#jumbotronTop {
+  animation: gradientAnimation 10s infinite;
+  background-size: 200% 100%;
+  transition: background 2s ease;
+  background-image: none; 
+}
