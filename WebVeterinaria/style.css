@@ -40,7 +40,6 @@
       font-style: italic;
     }
     p {
-      color: black;
       font-family: 'ADLaM Display', cursive; 
     }
      #resultadosCliente p {
@@ -67,6 +66,14 @@
   background: url('Img/puntero-veterinaria-removebg-preview.png') no-repeat center center;
   background-size: contain;
   background-color: rgba(150, 52, 241, 0.479);
+  color: rgb(233, 217, 217);
+
+}
+
+#cardVeterinarias p{
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  
 }
 #cardCallejeros {
   background: url('Img/emergencia-animal-removebg-preview.png') no-repeat center center;
@@ -85,7 +92,7 @@
   background-size: contain;
   background-color: rgba(255, 0, 0, 0.3); 
 }
-#cardVeterinarias p,
+/* #cardVeterinarias p,
 #cardVeterinarias h5,
 #cardCallejeros p,
 #cardCallejeros h5,
@@ -93,8 +100,8 @@
 #cardEspecialistas h5,
 #cardDonaciones p,
 #cardDonaciones h5 {
-    color: black;    
-}
+    color: wheat;    
+} */
 
 #rowJumbotron {
   padding-bottom: 0.5px;
@@ -139,3 +146,4 @@ body {
   transition: background 2s ease;
   background-image: none; 
 }
+
