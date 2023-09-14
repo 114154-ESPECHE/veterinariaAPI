@@ -25,21 +25,23 @@
       background-color: var(--carousel-control-bg-color);
     }
 
-    body {      
-      background-image: linear-gradient(to bottom, #00ffff, #006eff);
-    }
+    
     html, body {
       height: 100%;
       margin: 0;
-      padding: 0;
+      padding: 0; 
+      font-family: 'Varela Round', sans-serif;    
     }
+
+  
+
     h5 {
       color: black;
       font-style: italic;
     }
     p {
       color: black;
-      font-style: oblique;
+      font-family: 'ADLaM Display', cursive; 
     }
      #resultadosCliente p {
       margin-top: 10px;
@@ -54,3 +56,51 @@
       
       padding-left: 30px;
   }
+
+  .card {    
+    width: 200px;
+    height: auto; 
+    text-align: center;     
+}
+
+#cardUbicaciones {
+  background: url('Img/puntero-veterinaria-removebg-preview.png') no-repeat center center;
+  background-size: contain;
+}
+#cardCallejeros {
+  background: url('Img/emergencia-animal-removebg-preview.png') no-repeat center center;
+  background-size: auto; 
+}
+#cardEspecialistas {
+  background: url('Img/Especialidades.png') no-repeat center center;
+  background-size: contain;
+}
+#cardDonaciones {
+  background: url('Img/ayuda-animal-removebg-preview.png') no-repeat center center;
+  background-size: contain;
+}
+#cardUbicaciones p,
+#cardUbicaciones h5,
+#cardCallejeros p,
+#cardCallejeros h5,
+#cardEspecialistas p,
+#cardEspecialistas h5,
+#cardDonaciones p,
+#cardDonaciones h5 {
+    color: black;    
+}
+
+#columna1 {
+  background-color: rgba(200, 255, 0, 0.582);
+}
+#columna2A {
+  background-color: rgba(215, 231, 67, 0.582);
+}
+#columna2B {
+  background-color: rgba(255, 0, 0, 0.3);  
+}
+
+#divGestionMascotas {
+  padding-block-start: 30px;
+}
+

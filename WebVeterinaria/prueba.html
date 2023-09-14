@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=PT+Sans+Narrow&family=Varela+Round&display=swap" rel="stylesheet">
+
     <title>Prueba</title>
 </head>
 <body>
@@ -35,7 +40,7 @@
       
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4" id="columna1">
+            <div class="col-lg-3 ml-1" id="columna1">
                 <br>
                 <h4>Gestion Mascotas</h4>
                 <br>
@@ -66,50 +71,53 @@
                         medicamento lo cual lanzara una alerta o email a las veterinarias, farmacias
                         para facilitar la obtencion del mismo.
                     </p>                        
-                </p>
-                
+                </p>                
             </div>
-            <div class="col-lg-8" id="columna2">
+
+            
+            <div class="col-lg-8 ml-4" id="columna2">
                 <div class="row">
                     <!-- Columna 2A -->
-                    <div class="col-lg-4">                        
-                        <div class="card" style="width: 18rem;">
-                            <img src="Img/puntero-veterinaria.jpg" class="card-img-top" alt="...">
+                    <div class="col-lg-4" id="columna2A"> 
+                        <br>                       
+                        <div class="card" style="width: 18rem;" id="cardUbicaciones">                            
                             <div class="card-body">
-                              <h5 class="card-title">Veterinarias</h5>
-                              <p class="card-text">Ubiquemos las veterinarias que se encuentran adheridas.</p>
-                              <a href="#btnVerVeterinarias" class="btn btn-primary">Ver veterinarias</a>
+                                <h5 class="card-title"><strong>Veterinarias</strong> </h5>
+                                <p class="card-text">Ubiquemos las veterinarias que se encuentran adheridas.</p>
+                                <br><br>
+                                <a href="#btnVerVeterinarias" class="btn btn-primary">Ver veterinarias</a>
                             </div>
-                          </div>
+                        </div>
                           <br>
-                          <div class="card" style="width: 18rem;">
-                            <img src="Img/emergencia-animal.png" class="card-img-top" alt="...">
+                          <div class="card" style="width: 18rem;" id="cardCallejeros">
+                            <br>                            
                             <div class="card-body">
-                              <h5 class="card-title">Callejeros que nos necesitan</h5>
+                              <h5 class="card-title"><strong>Callejeros que nos necesitan</strong> </h5>
                               <p class="card-text">Encontraste un callejerito que necesita ayuda con urgencia, entonces ingresa.</p>
-                              <a href="#" class="btn btn-primary">S.O.S fiu-fiu</a>
+                              <br><br><br>
+                              <a href="#btnCallejeros" class="btn btn-primary">S.O.S</a>
                             </div>
                           </div>
                           <br>
                 </div>
                 <!-- columna 2B -->
-                <div class="col-lg-4">                    
-                    <div class="card" style="width: 18rem;">
-                        <img src="Img/Especialidades.png" class="card-img-top" alt="...">
+                <div class="col-lg-4 ml-4" id="columna2B"> 
+                    <br>                   
+                    <div class="card" style="width: 18rem;" id="cardEspecialistas">
+                        
                         <div class="card-body">
-                          <h5 class="card-title">Especialistas</h5>
+                          <h5 class="card-title"> <strong>Especialistas</strong></h5>
                           <p class="card-text">¿Necesitas un estudio o especialista en particular?
                             Entonces ingresa aca.</p>
-                          <a href="#" class="btn btn-primary">Ingresar</a>
+                          <a href="#btnEspecialistas" class="btn btn-primary">Ingresar</a>
                         </div>
                       </div>
                       <br>
-                      <div class="card" style="width: 18rem;">
-                        <img src="Img/ayuda-animal.jpg" class="card-img-top" alt="...">
+                      <div class="card" style="width: 18rem;" id="cardDonaciones">                        
                         <div class="card-body">
-                          <h5 class="card-title">Donaciones</h5>
+                            <h5 class="card-title"> <strong>Donaciones</strong></h5>
                           <p class="card-text">Podes realizar una donacion de alimentos, dinero, medicamentos o servicios.</p>
-                          <a href="#" class="btn btn-primary">Ingresar</a>
+                          <a href="#btnDonaciones" class="btn btn-primary">Ingresar</a>
                         </div>
                       </div>
                       <br>                    
