@@ -26,7 +26,7 @@
     }
 
     body {      
-      background-image: linear-gradient(to bottom, #00ffff, #0000ff);
+      background-image: linear-gradient(to bottom, #00ffff, #006eff);
     }
     html, body {
       height: 100%;
@@ -38,6 +38,19 @@
       font-style: italic;
     }
     p {
-      color: rgb(46, 43, 43);
+      color: black;
       font-style: oblique;
     }
+     #resultadosCliente p {
+      margin-top: 10px;
+      margin-bottom: 5px;
+     }
+     #resultadosCliente input{
+      margin-top: 1px;
+      margin-bottom: 5px;
+     }
+
+     #descripcionBusquedaMedicacion {
+      
+      padding-left: 30px;
+  }

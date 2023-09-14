@@ -3,13 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Prueba</title>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, a tempore.
-         Sunt necessitatibus ipsum autem fugit assumenda similique. Molestiae aliquid 
-         recusandae alias enim unde error molestias voluptate autem perferendis exercitationem?
-    </p>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="index.html">Principal</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="buscarCliente.html">Buscar Cliente<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="buscarMascota.html">Buscar Mascota</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nuevoCliente.html">Nuevo Cliente</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nuevaMascota.html">Nueva Mascota</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4" id="columna1">
+                <br>
+                <h4>Gestion Mascotas</h4>
+                <br>
+                <p>
+                    Este es un proyecto para el uso web, el objetivo es globalizar, unificar, 
+                    facilitar la información acerca de las mascotas, de esta forma se simplifica
+                    el trabajo a la hora de asistir a una veterinaria. <br>
+                    Al ser utilizado desde una web se facilita el acceso y esto hace que el uso sea
+                    simple y compatible para cualquier dispositivo. <br>
+                    Para simplificar la búsqueda los dueños o clientes van a ingresar su DNI
+                    y esto va a devolver las mascotas registradas que el cliente tiene. <br>
+                    El registro de la mascota tiene su historia médica, estudios realizados,
+                    recordatorios. <br>
+                    Cada profesional veterinario y cliente va a tener su interfaz, la que va 
+                    a proporcionar toda la información referida a sus mascotas.
+                    La web también va a contar con diferentes servicios como:
+                    <br>                    
+                    - Ubicaciones de veterinarias con su información<br>
+                    - Veterinarias 24hs<br>   
+                    - Contactos para diferentes estudios como radiografias, etc<br>
+                    - Lavado, cortes de pelo, fisioterapeutas<br>
+                    - Refugios <br>
+                    - Donaciones <br>   
+                    - Diferentes especialistas <br>
+                    - Busqueda de medicacion:
+                    <p id="descripcionBusquedaMedicacion">
+                        El cliente y el profesional veterinario podra realizar la busqueda del
+                        medicamento lo cual lanzara una alerta o email a las veterinarias, farmacias
+                        para facilitar la obtencion del mismo.
+                    </p>                        
+                </p>
+                
+            </div>
+            <div class="col-lg-8" id="columna2">
+                <div class="row">
+                    <!-- Columna 2A -->
+                    <div class="col-lg-4">                        
+                        <div class="card" style="width: 18rem;">
+                            <img src="Img/puntero-veterinaria.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Veterinarias</h5>
+                              <p class="card-text">Ubiquemos las veterinarias que se encuentran adheridas.</p>
+                              <a href="#btnVerVeterinarias" class="btn btn-primary">Ver veterinarias</a>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card" style="width: 18rem;">
+                            <img src="Img/emergencia-animal.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Callejeros que nos necesitan</h5>
+                              <p class="card-text">Encontraste un callejerito que necesita ayuda con urgencia, entonces ingresa.</p>
+                              <a href="#" class="btn btn-primary">S.O.S fiu-fiu</a>
+                            </div>
+                          </div>
+                          <br>
+                </div>
+                <!-- columna 2B -->
+                <div class="col-lg-4">                    
+                    <div class="card" style="width: 18rem;">
+                        <img src="Img/Especialidades.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Especialistas</h5>
+                          <p class="card-text">¿Necesitas un estudio o especialista en particular?
+                            Entonces ingresa aca.</p>
+                          <a href="#" class="btn btn-primary">Ingresar</a>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card" style="width: 18rem;">
+                        <img src="Img/ayuda-animal.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Donaciones</h5>
+                          <p class="card-text">Podes realizar una donacion de alimentos, dinero, medicamentos o servicios.</p>
+                          <a href="#" class="btn btn-primary">Ingresar</a>
+                        </div>
+                      </div>
+                      <br>                    
+                </div>   
+            </div>              
+        </div>
+    </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="main.js"></script>
 </html>

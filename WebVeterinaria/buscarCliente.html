@@ -63,6 +63,8 @@
           <h4>Datos del Cliente:</h4>
           <p><strong>DNI:</strong> <span id="dniCliente"></span></p>
           <input type="text" id="inputDni">
+          <p><strong>Nombre y Apellido:</strong> <span id="nombreCliente"></span></p>
+          <input type="text" id="inputNombreCliente">
           <p><strong>Fecha de Nacimiento:</strong> <span id="fechaNacimientoCliente"></span></p>
           <input type="date" id="inputFechaNacimiento">
           <p><strong>Telefono:</strong> <span id="telefonoCliente"></span></p>
@@ -100,11 +102,16 @@
         
         $('#inputDni').val(response.dni);
         $('#inputDni').prop('disabled', true);
+        $('#inputNombreCliente').val(response.nombre + " " + response.apellido) ;
+        $('#inputNombreCliente').prop('disabled', true);
         $('#inputFechaNacimiento').val(formatDate(response.fechaNacimiento));
+        $('#inputFechaNacimiento').prop('disabled', true);
         $('#inputTelefono').val(response.telefono);
+        $('#inputTelefono').prop('disabled', true);
         $('#inputDireccion').val(response.direccion);
+        $('#inputDireccion').prop('disabled', true);
         $('#inputEmail').val(response.email);
-        
+        $('#inputEmail').prop('disabled', true);        
       },
       error: function(error) {
         console.error('Error al obtener el usuario:', error);
