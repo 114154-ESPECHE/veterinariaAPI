@@ -24,16 +24,13 @@
       color: var(--carousel-control-color);
       background-color: var(--carousel-control-bg-color);
     }
-
     
     html, body {
       height: 100%;
       margin: 0;
       padding: 0; 
       font-family: 'Varela Round', sans-serif;    
-    }
-
-  
+    }  
 
     h5 {
       color: black;
@@ -51,65 +48,72 @@
       margin-bottom: 5px;
      }
 
-     #descripcionBusquedaMedicacion {
-      
+     #descripcionBusquedaMedicacion {      
       padding-left: 30px;
   }
 
   .card {    
-    width: 200px;
-    height: auto; 
-    text-align: center;     
+    width: 300px;
+    height: 110px; 
+    text-align: center;
 }
 
 #cardVeterinarias {
-  background: url('Img/puntero-veterinaria-removebg-preview.png') no-repeat center center;
+  background: url('Img/puntero-veterinaria-removebg-preview.png') no-repeat left;
   background-size: contain;
   background-color: rgba(150, 52, 241, 0.479);
   color: rgb(233, 217, 217);
-
+  padding-left: 1px;  
 }
 
-#cardVeterinarias p{
+#cardVeterinarias h5,
+#cardVeterinarias a {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  
+  padding-left: 30px;  
 }
 #cardCallejeros {
-  background: url('Img/emergencia-animal-removebg-preview.png') no-repeat center center;
-  background-size: auto; 
+  background: url('Img/emergencia-animal-removebg-preview.png') no-repeat left;
+  background-size: contain; 
   background-color: rgba(200, 255, 0, 0.582);
-  
+  color: red;
+  padding-left: 1px;  
+}
+#cardCallejeros h5,
+#cardCallejeros a {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  padding-left: 30px;  
 }
 #cardEspecialistas {
-  background: url('Img/Especialidades.png') no-repeat center center;
+  background: url('Img/Especialidades.png') no-repeat left;
   background-size: contain;
   background-color: rgba(0, 255, 55, 0.623); 
-  
+  color: white;
+  padding-left: 1px;  
 }
+#cardEspecialistas h5,
+#cardEspecialistas a {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  padding-left: 30px;
+}
+
 #cardDonaciones {
-  background: url('Img/ayuda-animal-removebg-preview.png') no-repeat center center;
+  background: url('Img/ayuda-animal-removebg-preview.png') no-repeat left;
   background-size: contain;
   background-color: rgba(255, 0, 0, 0.3); 
+  color: white;
+  padding-left: 1px;
 }
-/* #cardVeterinarias p,
-#cardVeterinarias h5,
-#cardCallejeros p,
-#cardCallejeros h5,
-#cardEspecialistas p,
-#cardEspecialistas h5,
-#cardDonaciones p,
-#cardDonaciones h5 {
-    color: wheat;    
-} */
+
+#cardDonaciones h5,
+#cardDonaciones a {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  padding-left: 30px;  
+}
 
 #rowJumbotron {
   padding-bottom: 0.5px;
 }
 
-#columna1 {
-  background-color: rgb(192, 218, 100);
-}
 @keyframes gradientAnimation {
   0% {
     background: linear-gradient(to right, #FAD02E, #FF9A9E);
@@ -147,3 +151,11 @@ body {
   background-image: none; 
 }
 
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}

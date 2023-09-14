@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    // Código que se ejecutará una vez que el documento esté listo
-
-    // Función para manejar el envío del formulario de búsqueda de mascota
     $('#buscarMascotaForm').submit(function(event) {
         event.preventDefault();
 
@@ -26,6 +23,7 @@ $(document).ready(function() {
         });
     });
 
-    // Función para manejar el carrusel
+    
     $('.carousel').carousel();
+    
 });
